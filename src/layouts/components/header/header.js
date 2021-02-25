@@ -1,15 +1,16 @@
 import './header.scss'
+import Nav from '../navigation/navigation'
 
 function Header () {
 
     return(
-        <div className='header'>
-            <img src="https://img.icons8.com/color/96/000000/fenix.png"/>
-            <h1>Underworld Corp.</h1>
-        </div>
+        <>
+            <div className='header'>
+                <h1>Underworld Corp.</h1>
+            </div>
+            <Nav />
+        </>
     )
 }
 
-// reference for phoenix img 
-{/* <a href="https://icons8.com/icon/57197/phoenix">phoenix icon by Icons8</a> */}
 export default Header;

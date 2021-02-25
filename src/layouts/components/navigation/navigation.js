@@ -20,7 +20,7 @@ export default function Nav() {
         aria-label="disabled tabs example"
       >
         <Tab label="Home" />
-        <Tab label="Characters" disabled />
+        <Tab label="Characters"/>
         <Tab label="Places" />
       </Tabs>
     </Paper>
