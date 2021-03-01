@@ -1,4 +1,4 @@
-import Home from './layouts/home/home'
+import Home from './layouts/pages/home/home'
 
 function App() {
   return (
