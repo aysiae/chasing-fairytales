@@ -13,5 +13,12 @@ span {
 
 h3 {
     padding: 10px;
+}
+
+.active {
+    border-bottom: 2px solid blue;
+}
+
+.inactive {
     border-bottom: 1px solid whitesmoke;
 }

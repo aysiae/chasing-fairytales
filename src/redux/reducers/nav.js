@@ -2,6 +2,7 @@ let initialState = {nav: [{value: 'Home', status: 'active'},{value:'Characters',
 
 
 export const changeActive = (category) => {
+    console.log('inside changeACtive');
     return {
         payload: category,
         type: 'CHANGE-ACTIVE'
@@ -12,6 +13,7 @@ export default (state=initialState, action) => {
     let {type, payload} = action;
     switch(type) {
         case 'CHANGE-ACTIVE':
+            console.log('inside switch');
             let change = state.nav.map(navItem => {
                 if(navItem.value === payload.value) {
                     navItem.status = 'active';
