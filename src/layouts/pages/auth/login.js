@@ -1,12 +1,18 @@
 import {useState} from 'react';
 import {Auth} from '../../../firebase/firebase';
-import validators from './validators';
+import {useHistory} from 'react-router-dom';
 import './login.scss';
+
+
+// TODO: add validators 
+// TODO: work on register.js
 
 function Login (props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rememeberMe, setRememberMe] = useState(false);
+
+    const history = useHistory();
 
     const setRemember = () => {
         if(rememeberMe) {
@@ -15,8 +21,6 @@ function Login (props) {
             setRememberMe(true);
         }
     }
-
-
     
     const doLogin = (event) => {
         const email1 = email;
@@ -25,7 +29,7 @@ function Login (props) {
             .then(() => {
                 setEmail(email1);
                 setPassword(password1);
-                alert('sign in successful')
+                history.push('/')
             })
             .catch((error) => {
                 console.log('email', email1)
