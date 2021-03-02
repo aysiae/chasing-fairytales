@@ -4,15 +4,17 @@ function Login () {
 
     return(
         <>
-        <div className='login'>
-            <h2>Login:</h2>
-            <form style={{marginTop: '50px'}}>
-                <label className='username'>Username:</label>
-                <input className='username' type='text'></input> {' '}
-                <label className='password'>Password:</label>
-                <input className='password' type='password'></input>
-                <button>Go</button>
-            </form>
+        <div className='container'>
+            <h2>hello writr!</h2>
+            <div className='login'>
+                <form style={{marginTop: '50px'}}>
+                    <label className='label'>Email:</label>
+                    <input className='text' type='text'></input> {' '}
+                    <label className='label'>Password:</label>
+                    <input className='text' type='password'></input>
+                    <button>sign in</button>
+                </form>
+            </div>
         </div>
         </>
     )
