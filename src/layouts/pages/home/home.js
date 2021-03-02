@@ -21,7 +21,7 @@ function Home (props) {
         <>
             <Header />
             <main className='main'>
-                <p>HI</p>
+                
             </main>
             <Footer />
         </>

@@ -2,6 +2,7 @@
  
 $font-newsreader: 'Newsreader', serif;
 $header-img: 'https://cdn.pixabay.com/photo/2017/08/16/22/18/butterflies-2649292_1280.png';
+// https://pixabay.com/photos/butterflies-blue-insect-isolated-2649292/
 
 .header {
     width: 100%;
@@ -14,12 +15,25 @@ $header-img: 'https://cdn.pixabay.com/photo/2017/08/16/22/18/butterflies-2649292
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    
 }
 
 
 h1 {
-    font-family: $font-newsreader;
+    font-family: $font-newsreader; 
     color: white;
     float: left;
     font-size: 100px;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
 }
+
+@keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #005ce6, 0 0 40px #0051e6, 0 0 50px #0049e6, 0 0 60px #0064e6, 0 0 70px #0064e6;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #4d85ff, 0 0 40px #4d8bff, 0 0 50px #4d77ff, 0 0 60px #4d94ff, 0 0 70px #4d77ff, 0 0 80px #4d77ff;
+    }
+  }

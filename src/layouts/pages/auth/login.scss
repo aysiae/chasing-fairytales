@@ -4,6 +4,10 @@
 $font-bebas: 'Bebas Neue', cursive;
 $font-newsreader: 'Newsreader', serif;
 
+body {
+    background-color: black;
+}
+
 .container {
     display: flex;
     flex-direction: column;
