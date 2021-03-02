@@ -4,9 +4,6 @@ import {useHistory} from 'react-router-dom';
 import './login.scss';
 
 
-// TODO: add validators 
-// TODO: work on register.js
-
 function Login (props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -14,6 +11,8 @@ function Login (props) {
 
     const history = useHistory();
 
+
+    //TODO: get remember me session to persist
     const setRemember = () => {
         if(rememeberMe) {
             setRememberMe(false);
@@ -21,6 +20,9 @@ function Login (props) {
             setRememberMe(true);
         }
     }
+
+
+    // TODO: add validators    
     
     const doLogin = (event) => {
         const email1 = email;

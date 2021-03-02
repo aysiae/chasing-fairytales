@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,300;1,500&display=swap');
  
-$staatliches-font: 'Staatliches', cursive;
-$header-img: 'https://images.unsplash.com/photo-1506105524407-94b39b1e7415?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1650&q=80';
+$font-newsreader: 'Newsreader', serif;
+$header-img: 'https://cdn.pixabay.com/photo/2017/08/16/22/18/butterflies-2649292_1280.png';
 
 .header {
     width: 100%;
-    height: 500px;
+    height: 275px;
     background-color: black;
     display: flex;
     justify-content: center;
@@ -18,7 +18,7 @@ $header-img: 'https://images.unsplash.com/photo-1506105524407-94b39b1e7415?ixlib
 
 
 h1 {
-    font-family: $staatliches-font;
+    font-family: $font-newsreader;
     color: white;
     float: left;
     font-size: 100px;
