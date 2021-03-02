@@ -1,11 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,300;1,500&display=swap');
  
-$staatliches-font: 'Staatliches', cursive;
-$header-img: 'https://images.unsplash.com/photo-1506105524407-94b39b1e7415?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1650&q=80';
+$font-newsreader: 'Newsreader', serif;
+$header-img: 'https://cdn.pixabay.com/photo/2017/08/16/22/18/butterflies-2649292_1280.png';
+// https://pixabay.com/photos/butterflies-blue-insect-isolated-2649292/
 
 .header {
     width: 100%;
-    height: 500px;
+    height: 275px;
     background-color: black;
     display: flex;
     justify-content: center;
@@ -14,12 +15,25 @@ $header-img: 'https://images.unsplash.com/photo-1506105524407-94b39b1e7415?ixlib
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    
 }
 
 
 h1 {
-    font-family: $staatliches-font;
+    font-family: $font-newsreader; 
     color: white;
     float: left;
     font-size: 100px;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
 }
+
+@keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #005ce6, 0 0 40px #0051e6, 0 0 50px #0049e6, 0 0 60px #0064e6, 0 0 70px #0064e6;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #4d85ff, 0 0 40px #4d8bff, 0 0 50px #4d77ff, 0 0 60px #4d94ff, 0 0 70px #4d77ff, 0 0 80px #4d77ff;
+    }
+  }

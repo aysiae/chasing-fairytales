@@ -1,28 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,300;1,500&display=swap');
+
+$font-bebas: 'Bebas Neue', cursive;
+$font-newsreader: 'Newsreader', serif;
+
+body {
+    background-color: black;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
 .login {
     background-color: whitesmoke;
     height: 200px;
     width: 500px;
+    margin-top: -115px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
-    padding: 15px;
     color: grey;
+    display: flex;
+    justify-content: center;
+}
+
+
+h2 {
+    text-align: center;
+    width: 90%;
+    font-family: $font-newsreader;
+    color: white;
+    font-size: 60px;
+    float: left;
+    padding: 50px;
 }
 
 form {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-bottom: 50px;
+    font-family: $font-newsreader;
 }
 
-.username {
+.text {
     width: 200px;
+    margin-bottom: 10px;
+    padding: 5px;
 }
 
-.password {
-    width: 200px;
+.label {
+    margin-bottom: 5px;
 }
+
 
 button {
-    width: 200px;
+    width: 100px;
+    font-family: $font-newsreader;
 }

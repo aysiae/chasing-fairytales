@@ -1,12 +1,16 @@
 // Firebase App (the core Firebase SDK) is always required and must be listed first
 import firebase from "firebase/app";
+
+// Add the Firebase products that you want to use
+import "firebase/auth";
+import "firebase/firestore";
+
+
 // If you are using v7 or any earlier version of the JS SDK, you should import firebase using namespace import
 // import * as firebase from "firebase/app"
 require('dotenv').config();
 
-// Add the Firebase products that you want to use
-import "firebase/auth";
-import "firebase/database";
+
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,

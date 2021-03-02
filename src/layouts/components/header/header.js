@@ -6,7 +6,7 @@ function Header () {
     return(
         <>
             <div className='header'>
-                <h1>writrs</h1>
+                <h1>writrs.</h1>
             </div>
             <Nav />
         </>

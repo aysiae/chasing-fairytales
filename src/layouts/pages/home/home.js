@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+import {Auth} from '../../../firebase/firebase'
 
 
 // components 
@@ -19,17 +20,9 @@ function Home (props) {
     return (
         <>
             <Header />
-            <div id='main'>
-            {props.characters.map(char => (
-                <div className='card'>
-                <img src={char.img} style={{width:'100%',}} />
-                    <div className='container'>
-                        <p>{char.name.first} {char.name.middle} {char.name.last}</p>
-                    </div>
-                </div>
-
-            ))}
-            </div>
+            <main className='main'>
+                
+            </main>
             <Footer />
         </>
     )
