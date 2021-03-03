@@ -1,6 +1,7 @@
 import Home from './layouts/pages/home/home'
-import Header from './layouts/components/header/header'
+import HeroHeader from './layouts/components/header/hero-header.js'
 import Login from './layouts/pages/auth/login'
+import PrivateRoutes from './routes/private'
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,9 +13,10 @@ function App() {
   return (
     <>
     <Router>
-      <Route exact path='/'>
-        <Home />
+      <Route exaxt path='/test'>
+          <HeroHeader/>
       </Route>
+      <PrivateRoutes path='/' component={Home}/>
       <Route exact path='/login'>
         <Login />
       </Route>
