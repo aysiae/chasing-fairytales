@@ -1,19 +1,38 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './navigation.scss'
 
 
+function Nav(props) {
+  const [categories, setCategories] = useState([
+    {value: 'Home', status: true},
+    {value:'Characters', status: false},
+    {value:'Places', status: false},
+    {value:'Scenes', status: false}])
 
-export default function Nav() {
+
+  const handleClick = (e, item) => {
+    let update = categories.map(category => {
+      if(item.value == category.value) {
+        category.status = true;
+      } else {
+        category.status = false;
+      }
+      return category;
+    })
+    setCategories(update);
+  }
 
 
   return (
     <div id='nav'>
       <span>
-        <h3>Home</h3> 
-        <h3>Characters</h3>
-        <h3>Places</h3>
-        <h3>Scenes</h3>
+        {categories.map(item => (
+          <h3 className={item.status ? 'active': null}
+          onClick={(e) => handleClick(e, item)}>{item.value}</h3>
+        ))}
       </span>
     </div>
   );
 }
+
+export default Nav;
