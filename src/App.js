@@ -23,10 +23,10 @@ function App() {
       <Route exact path='/login'>
         <Login />
       </Route>
-      <Route exact path ='/characters/add'>
+      <Route exact path ='/chars/add'>
           <CharacterForm/>
       </Route>
-      <Route exact path='/characters'>
+      <Route exact path='/chars'>
         <Characters />
       </Route>
       </Switch>

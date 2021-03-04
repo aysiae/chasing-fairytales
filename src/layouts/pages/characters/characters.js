@@ -1,6 +1,8 @@
 import {connect} from 'react-redux';
 import {getAll} from '../../../firebase/database/chars'
+import {Auth} from '../../../firebase/firebase'
 import {useState, userEffect} from 'react'
+import {useHistory} from 'react-router-dom';
 
 // components 
 import Header from '../../components/header/header';
@@ -17,10 +19,16 @@ const mapStateToProps = state => ({
 
 function Characters (props) {
     const [chars, setChars] = useState([]);
+    const history = useHistory();
 
     const loadCharacters = async () => {
-        setChars(await getAll());
+        setChars(await getAll(Auth.currentUser.uid));
         console.log(chars);
+
+    }
+
+    const handleAdd = () => {
+        history.push('/chars/add')
 
     }
     
@@ -30,6 +38,7 @@ function Characters (props) {
     return (
         <>
             <Header />
+            <button onClick={handleAdd}>Add New Character</button>
             <div id='main'>
             {chars.map(char => (
                 <div className='card'>
