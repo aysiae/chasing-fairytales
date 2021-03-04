@@ -1,22 +1,34 @@
 import { useState } from 'react';
+import {useHistory} from 'react-router-dom'
 import Header from '../../components/header/header'
+import {addCharacter} from '../../../firebase/database/chars'
+import { v4 as uuid } from 'uuid';
 import './character-form.scss'
 
-function CharacterForm() {
+function CharacterForm(props) {
     // immutable data
-    const starSigns = ['None','Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagitarius','Capricorn','Aquarius','Pisces'];
-    const mbti = ['None', 'INTJ - The Architect', 'INTP - The Logician', 'ENTJ - The Commander', 'ENTP - The Debater',
+    const starSigns = ['Select','Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagitarius','Capricorn','Aquarius','Pisces'];
+    const mbti = ['Select', 'INTJ - The Architect', 'INTP - The Logician', 'ENTJ - The Commander', 'ENTP - The Debater',
     'INFJ - The Advocate', 'INFP - The Mediator', 'ENFJ - The Protagonist', 'ENFP - The Campaigner',
     'ISTJ - The Logistician', 'ISFJ - The Defender', 'ESTJ - The Executive', 'ESFJ - The Consul',
     'ISTP - The Virtuoso', 'ISFP - The Adventurer', 'ESTP - The Entrepreneur', 'ESFP - The Entertainer']
-    const morals = ['None', 'Lawful Neutral', 'True Neutral', 'Chaotic Neutral', 'Lawful Good', 'True Good', 'Chaotic Good','Lawful Evil', 'True Evil','Chaotic Evil'];
-    const loveType = ['None', 'Philia','Pragma','Storge','Ludus','Eros','Mania','Philautia','Agape'];
-    const loveLang = ['None','Words of Affirmation', 'Physical Touch','Quality Time','Recieving Gifts','Acts of Service'];
+    const morals = ['Select', 'Lawful Neutral', 'True Neutral', 'Chaotic Neutral', 'Lawful Good', 'True Good', 'Chaotic Good','Lawful Evil', 'True Evil','Chaotic Evil'];
+    const loveType = ['Select', 'Philia','Pragma','Storge','Ludus','Eros','Mania','Philautia','Agape'];
+    const loveLang = ['Select','Words of Affirmation', 'Physical Touch','Quality Time','Recieving Gifts','Acts of Service'];
     const relationship = ['Single','In Relationship','Married','It\'s complicated'];
-    const gender = ['male', 'female','non-binary']
+    const gender = ['Select','Male', 'Female','Non-Binary']
+    const sexualPref = ['Hetersexual','Bisexual','Homosexual','Pansexual','Asexual','Demisexual'];
+    const romancePref = ['Heteroromantic','Biromantic','Homoromantic','Panromantic','Aromantic','Demiromantic','Greyromantic'];
+
+    const history = useHistory();
+    
     // state 
     const [inRelationship, setInRelationship] = useState(false)
     const [isSuper, setIsSuper] = useState(false);
+    
+
+    // body
+    const charSheet = {};
 
     const handleInRelationship = (value) => {
         if(value !== 'Single') {
@@ -34,6 +46,20 @@ function CharacterForm() {
         }
     }
 
+    const handleBody = (e) => {
+        charSheet[e.target.name] = e.target.value; 
+    }
+
+
+    // handleSubmit
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        charSheet['uuid'] = uuid();
+        addCharacter(charSheet);
+        history.push('/characters')
+    }
+
+
 
     return(
         <>
@@ -44,65 +70,70 @@ function CharacterForm() {
                     <h2>Character Sheet:</h2>
                     <h3>Basics</h3>
                     <label>Image URL</label>
-                    <input name='url' type='text'></input>
+                    <input onChange={handleBody} name='img' type='text'></input>
                     <label>First Name:</label>
-                    <input name='firstName' type='text'></input>
+                    <input onChange={handleBody} name='firstName' type='text'></input>
                     <label>Middle Name:</label>
-                    <input name='middleName' type='text'></input>
+                    <input onChange={handleBody} name='middleName' type='text'></input>
                     <label>Last Name:</label>
-                    <input name='lastName' type='text'></input>
+                    <input onChange={handleBody} name='lastName' type='text'></input>
                     <label>Nicknames:</label>
-                    <input name='nicknames' type='text'></input>
+                    <input onChange={handleBody} name='nicknames' type='text'></input>
                     <label>Birthday</label>
-                    <input name='birthday' type='date'></input>
+                    <input onChange={handleBody} name='birthday' type='date'></input>
                     <label>Birthplace:</label>
-                    <input name='birthplace' type='text'></input>
+                    <input onChange={handleBody} name='birthplace' type='text'></input>
                     <label>Age</label>
-                    <input name='age' type='number' min='1'></input>
+                    <input onChange={handleBody} name='age' type='number' min='1'></input>
                     <label>Gender:</label>
-                        <select name='gender'>
+                        <select onChange={handleBody} name='gender'>
                             {gender.map(sex=>(
                             <option value={sex}>{sex}</option>
                             ))}
                         </select>
                     <label>Occupation</label>
-                    <input name='occupation' type='text'></input>
+                    <input onChange={handleBody} name='occupation' type='text'></input>
+                    <label>Is supernatural?</label>
+                    <select onChange={handleBody} name='super' onChange={(e) => handleIsSuper(e.target.value)}>
+                        <option value='No'>No</option>
+                        <option value='Yes'>Yes</option>
+                    </select>
                     
                     <h3>Personality</h3>
                     <label>Moral Alignment:</label>
-                    <select name='moralAlign'> 
+                    <select onChange={handleBody} name='moralAlign'> 
                         {morals.map(type=> (
                             <option value={type}>{type}</option>
                         ))}
                     </select>
                     <label>MBTI:</label>
-                    <select name='mbti'> 
+                    <select onChange={handleBody} name='mbti'> 
                         {mbti.map(type => (
                             <option value={type}>{type}</option>
                         ))}
                     </select>
                     <label>Values:</label>
-                    <input name='values' className='textArea' type='textarea'></input>
+                    <input onChange={handleBody} name='values' className='textArea' type='textarea'></input>
                     <label>Positive Traits (strengths):</label>
-                    <input name='strengths' className='textArea' type='textarea'></input>
+                    <input onChange={handleBody} name='strengths' className='textArea' type='textarea'></input>
                     <label>Negative Traits (flaws):</label>
-                    <input name='flaws' className='textArea' type='textarea'></input>
+                    <input onChange={handleBody} name='flaws' className='textArea' type='textarea'></input>
 
                     <h3>Star Signs</h3>
                     <label>Sun</label>
-                    <select name='sunSign'>
+                    <select onChange={handleBody} name='sunSign'>
                         {starSigns.map(sign =>(
                             <option value={sign}>{sign}</option>
                         ))}
                     </select>
                     <label>Moon</label>
-                    <select name='moonSign'>
+                    <select onChange={handleBody} name='moonSign'>
                         {starSigns.map(sign =>(
                             <option value={sign}>{sign}</option>
                         ))}
                     </select>
                     <label>Rising</label>
-                    <select name='risingSign'>
+                    <select onChange={handleBody} name='risingSign'>
                         {starSigns.map(sign =>(
                             <option value={sign}>{sign}</option>
                         ))}
@@ -110,39 +141,52 @@ function CharacterForm() {
 
                     <h3>Family & Heritage</h3>
                     <label>Ethnicity:</label>
-                    <input name='ethnicity' type='text'></input>
+                    <input onChange={handleBody} name='ethnicity' type='text'></input>
                     <label>Family Legacy:</label>
-                    <input name='legacy' type='text'></input>
+                    <input onChange={handleBody} name='legacy' type='text'></input>
                     <label>Generation:</label>
-                    <input name='generation' type='text'></input>
+                    <input onChange={handleBody} name='generation' type='text'></input>
                     <label>Spoken Languages</label>
-                    <input name='languages' type='text'></input>
+                    <input onChange={handleBody} name='languages' type='text'></input>
                     <label>Mother:</label>
-                    <input name='mother' type='text'></input>
+                    <input onChange={handleBody} name='mother' type='text'></input>
                     <label>Father:</label>
-                    <input name='father' type='text'></input>
+                    <input onChange={handleBody} name='father' type='text'></input>
                     <label>Siblings:</label>
-                    <input name='siblings' type='text'></input>
+                    <input onChange={handleBody} name='siblings' type='text'></input>
                     <label>Children:</label>
-                    <input name='kids' type='text'></input>
+                    <input onChange={handleBody} name='kids' type='text'></input>
 
                     <h3>Love & Romance</h3>
                     <label>Love Type:</label>
-                    <select name='loveType'>
+                    <select onChange={handleBody} name='loveType'>
                         {loveType.map(type => (
                             <option value={type}>{type}</option>
                         ))}
                     </select>
-                    <label>Love Languages (limit 2):</label>
+                    <label>Love Language:</label>
+                    <select onChange={handleBody} name='loveLang'>
                     {loveLang.map(type=> (
-                        <span>
-                        <input name='loveLang' type='checkbox' value={type}/>
-                        <label>{type}</label>
-                        </span>
+                        <option value={type}>{type}</option>
                     ))
                     }
+                    </select>
+                    <label>Sexual Orientation:</label>
+                    <select onChange={handleBody} name='sexualPref'>
+                    {sexualPref.map(type=> (
+                        <option value={type}>{type}</option>
+                    ))
+                    }
+                    </select>
+                    <label>Romantic Orientation:</label>
+                    <select onChange={handleBody} name='romancePref'>
+                    {romancePref.map(type=> (
+                        <option value={type}>{type}</option>
+                    ))
+                    }
+                    </select>
                     <label>Relationship Status:</label>
-                    <select name='relationshipStatus' onChange={(e) => handleInRelationship(e.target.value)}>
+                    <select onChange={handleBody} name='relationshipStatus' onChange={(e) => handleInRelationship(e.target.value)}>
                         {relationship.map(status => (
                             <option value={status}>{status}</option>
                         ))}
@@ -150,34 +194,39 @@ function CharacterForm() {
                     {inRelationship ? 
                     <>
                     <label>With:</label>
-                    <input name='shipWho' type='text'></input>
+                    <input onChange={handleBody} name='shippedWithWho' type='text'></input>
                     </>
                 : null}
 
-                <h3>Supernatural</h3>
-                <label>Is supernatural?</label>
-                <select name='super' onChange={(e) => handleIsSuper(e.target.value)}>
-                    <option value='No'>No</option>
-                    <option value='Yes'>Yes</option>
-                </select>
                 { isSuper ?
                 <>
+                 <h3>Supernatural</h3>
                 <label>Supernatural Type:</label>
-                <input name='type' type='text'></input>
+                <input onChange={handleBody} name='type' type='text'></input>
                 <label>Supernatural Species/Being Description:</label>
-                <input name='superDesc' className='textArea' type='textarea'></input>
+                <input onChange={handleBody} name='superDesc' className='textArea' type='textarea'></input>
+                <label>Supernatural Origin:</label>
+                <input onChange={handleBody} name='superOrigin' className='textArea' type='textarea'></input>
                 <label>Supernatural Powers:</label>
-                <input name='superPowers' className='textArea' type='textarea'></input>
+                <input onChange={handleBody} name='superPowers' className='textArea' type='textarea'></input>
                 </>
                 : null
                 }
 
-                <h3>Biography:</h3>
-                <input name='bio' className='textArea' type='textarea'></input>
+                <h3>About:</h3>
+                <label>Biography:</label>
+                <input onChange={handleBody} name='bio' className='textArea' type='textarea'></input>
+                <label>Hobbies:</label>
+                <input onChange={handleBody} name='hobbies' className='textArea' type='textarea'></input>
+                <label>Likes:</label>
+                <input onChange={handleBody} name='likes' className='textArea' type='textarea'></input>
+                <label>Dislikes:</label>
+                <input onChange={handleBody} name='dislikes' className='textArea' type='textarea'></input> 
+
                 
                 <h3>Additional Notes:</h3>
-                <input name='notes' className='textArea' type='textarea'></input>
-                <button id='submit'>Submit</button>
+                <input onChange={handleBody} name='notes' className='textArea' type='textarea'></input>
+                <button id='submit' onClick={handleSubmit}>Submit</button>
                 </fieldset>
             </form>
             
