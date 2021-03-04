@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {useHistory} from 'react-router-dom'
 import Header from '../../components/header/header'
 import {addCharacter} from '../../../firebase/database/chars'
+import { v4 as uuid } from 'uuid';
 import './character-form.scss'
 
 function CharacterForm(props) {
@@ -16,6 +17,9 @@ function CharacterForm(props) {
     const loveLang = ['Select','Words of Affirmation', 'Physical Touch','Quality Time','Recieving Gifts','Acts of Service'];
     const relationship = ['Single','In Relationship','Married','It\'s complicated'];
     const gender = ['Select','Male', 'Female','Non-Binary']
+    const sexualPref = ['Hetersexual','Bisexual','Homosexual','Pansexual','Asexual','Demisexual'];
+    const romancePref = ['Heteroromantic','Biromantic','Homoromantic','Panromantic','Aromantic','Demiromantic','Greyromantic'];
+
     const history = useHistory();
     
     // state 
@@ -50,6 +54,7 @@ function CharacterForm(props) {
     // handleSubmit
     const handleSubmit = async (e) => {
         e.preventDefault();
+        charSheet['uuid'] = uuid();
         addCharacter(charSheet);
         history.push('/characters')
     }
@@ -162,6 +167,20 @@ function CharacterForm(props) {
                     <label>Love Language:</label>
                     <select onChange={handleBody} name='loveLang'>
                     {loveLang.map(type=> (
+                        <option value={type}>{type}</option>
+                    ))
+                    }
+                    </select>
+                    <label>Sexual Orientation:</label>
+                    <select onChange={handleBody} name='sexualPref'>
+                    {sexualPref.map(type=> (
+                        <option value={type}>{type}</option>
+                    ))
+                    }
+                    </select>
+                    <label>Romantic Orientation:</label>
+                    <select onChange={handleBody} name='romancePref'>
+                    {romancePref.map(type=> (
                         <option value={type}>{type}</option>
                     ))
                     }
