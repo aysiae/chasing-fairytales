@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {Auth, database} from '../../../firebase/firebase'
 import Header from '../../components/header/header'
+import {addCharacter} from '../../../firebase/database/chars'
 import './character-form.scss'
 
 function CharacterForm() {
@@ -22,7 +23,7 @@ function CharacterForm() {
     
 
     // body
-    const body = {};
+    const charSheet = {};
 
     const handleInRelationship = (value) => {
         if(value !== 'Single') {
@@ -41,15 +42,14 @@ function CharacterForm() {
     }
 
     const handleBody = (e) => {
-        body[e.target.name] = e.target.value; 
+        charSheet[e.target.name] = e.target.value; 
     }
 
 
     // handleSubmit
     const handleSubmit = async (e) => {
         e.preventDefault();
-        body['user'] = Auth.currentUser.uid;
-        console.log(body['user']);
+        addCharacter(charSheet);
     }
 
 
