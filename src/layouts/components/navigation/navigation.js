@@ -1,13 +1,15 @@
 import React, {useEffect, useState} from 'react';
+import {useHistory} from 'react-router-dom';
 import './navigation.scss'
 
 
 function Nav(props) {
+  const history = useHistory();
   const [categories, setCategories] = useState([
-    {value: 'Home', status: true},
-    {value:'Characters', status: false},
-    {value:'Places', status: false},
-    {value:'Scenes', status: false}])
+    {value: 'Home', route: '/' , status: true},
+    {value:'Characters', route: '/chars', status: false},
+    {value:'Places', route:'/places' ,status: false},
+    {value:'Scenes', route:'/scenes', status: false}])
 
 
   const handleClick = (e, item) => {
@@ -20,6 +22,7 @@ function Nav(props) {
       return category;
     })
     setCategories(update);
+    history.push(item.route);
   }
 
 

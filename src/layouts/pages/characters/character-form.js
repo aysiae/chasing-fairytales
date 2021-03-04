@@ -56,7 +56,7 @@ function CharacterForm(props) {
         e.preventDefault();
         charSheet['uuid'] = uuid();
         addCharacter(charSheet);
-        history.push('/characters')
+        history.push('/chars')
     }
 
 
