@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import {Auth, database} from '../../../firebase/firebase'
+import {useHistory} from 'react-router-dom'
 import Header from '../../components/header/header'
 import {addCharacter} from '../../../firebase/database/chars'
 import './character-form.scss'
 
-function CharacterForm() {
+function CharacterForm(props) {
     // immutable data
     const starSigns = ['Select','Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagitarius','Capricorn','Aquarius','Pisces'];
     const mbti = ['Select', 'INTJ - The Architect', 'INTP - The Logician', 'ENTJ - The Commander', 'ENTP - The Debater',
@@ -16,6 +16,7 @@ function CharacterForm() {
     const loveLang = ['Select','Words of Affirmation', 'Physical Touch','Quality Time','Recieving Gifts','Acts of Service'];
     const relationship = ['Single','In Relationship','Married','It\'s complicated'];
     const gender = ['Select','Male', 'Female','Non-Binary']
+    const history = useHistory();
     
     // state 
     const [inRelationship, setInRelationship] = useState(false)
@@ -50,6 +51,7 @@ function CharacterForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         addCharacter(charSheet);
+        history.push('/characters')
     }
 
 

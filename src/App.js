@@ -2,6 +2,7 @@ import Home from './layouts/pages/home/home'
 import HeroHeader from './layouts/components/header/hero-header.js'
 import Login from './layouts/pages/auth/login'
 import CharacterForm from './layouts/pages/characters/character-form'
+import Characters from './layouts/pages/characters/characters'
 import PrivateRoutes from './routes/private'
 import {
   BrowserRouter as Router,
@@ -14,6 +15,7 @@ function App() {
   return (
     <>
     <Router>
+      <Switch>
       <Route exaxt path='/test'>
           <HeroHeader/>
       </Route>
@@ -21,9 +23,13 @@ function App() {
       <Route exact path='/login'>
         <Login />
       </Route>
-      <Route exact path ='/character/add'>
+      <Route exact path ='/characters/add'>
           <CharacterForm/>
       </Route>
+      <Route exact path='/characters'>
+        <Characters />
+      </Route>
+      </Switch>
     </Router>
     </>
   );
