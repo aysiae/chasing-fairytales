@@ -1,12 +1,18 @@
 import {database, Auth} from '../firebase';
 
+const currentRef = database.collection('users').doc(Auth.currentUser.uid);
+
 export const addCharacter = (charSheet) => {
-    database.collection('users').doc(Auth.currentUser.uid).collection('characters').doc(charSheet.firstName).set({
+    currentRef.collection('characters').doc(charSheet.firstName).set({
         charSheet
     }).then(() => console.log('Success!'))
     .catch(e => console.log(e));
 }
 
 export const getCharacter = (charSheet) => {
-    
+    currentRef.collection('characters')
+    .get()
+    .then((querySnapshot)=> {
+        querySnapshot.forEach(snapshot => console.log(snapshot));
+    })
 }
