@@ -14,6 +14,7 @@ import './characters.scss';
 
 function Characters (props) {
     const placeholderImg = 'https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2027&q=80';
+    // do I want characters to be accessed globally? 
     const [chars, setChars] = useState([]);
     const history = useHistory();
 
@@ -27,6 +28,11 @@ function Characters (props) {
         history.push('/chars/add')
 
     }
+
+    const handleEdit = () => {
+        console.log('yeehaw')
+    }
+
     
     useEffect(loadCharacters,[]);
 
@@ -36,8 +42,13 @@ function Characters (props) {
             <Header />
             <div id='addCharButton'><button onClick={handleAdd}>Add New Character</button></div>
             <div id='main'>
-            {chars.map(char => (
+            {chars.map(char => {
+                
+                char.edit = false;
+                return (
                 <div className='card'>
+
+                {/* conditionally render plain text vs input for edits using char.edit*/}
                 {char.charSheet.img ?
                 <img src={char.charSheet.img} style={{width:'100%',}} />
                 : <img src={placeholderImg} style={{width:'100%',}}/>}
@@ -97,13 +108,13 @@ function Characters (props) {
                             </span>
                              : null } 
                         </div>
-                        <button>Edit</button>
+                        <button onClick={handleEdit}>Edit</button>
                        
                         
                     </div>
                 </div>
 
-            ))}
+            )})}
             </div>
             <Footer />
         </>
