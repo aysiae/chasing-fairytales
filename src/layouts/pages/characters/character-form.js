@@ -17,8 +17,8 @@ function CharacterForm(props) {
     const loveLang = ['Select','Words of Affirmation', 'Physical Touch','Quality Time','Recieving Gifts','Acts of Service'];
     const relationship = ['Single','In Relationship','Married','It\'s complicated'];
     const gender = ['Select','Male', 'Female','Non-Binary']
-    const sexualPref = ['Hetersexual','Bisexual','Homosexual','Pansexual','Asexual','Demisexual'];
-    const romancePref = ['Heteroromantic','Biromantic','Homoromantic','Panromantic','Aromantic','Demiromantic','Greyromantic'];
+    const sexualPref = ['Select','Heterosexual','Bisexual','Homosexual','Pansexual','Asexual','Demisexual'];
+    const romancePref = ['Select','Heteroromantic','Biromantic','Homoromantic','Panromantic','Aromantic','Demiromantic','Greyromantic'];
 
     const history = useHistory();
     
@@ -69,14 +69,15 @@ function CharacterForm(props) {
                 <fieldset>
                     <h2>Character Sheet:</h2>
                     <h3>Basics</h3>
+                    <p>* are required fields</p>
                     <label>Image URL</label>
                     <input onChange={handleBody} name='img' type='text'></input>
-                    <label>First Name:</label>
-                    <input onChange={handleBody} name='firstName' type='text'></input>
+                    <label>First Name:*</label>
+                    <input onChange={handleBody} name='firstName' type='text' required></input>
                     <label>Middle Name:</label>
                     <input onChange={handleBody} name='middleName' type='text'></input>
-                    <label>Last Name:</label>
-                    <input onChange={handleBody} name='lastName' type='text'></input>
+                    <label>Last Name:*</label>
+                    <input onChange={handleBody} name='lastName' type='text' required></input>
                     <label>Nicknames:</label>
                     <input onChange={handleBody} name='nicknames' type='text'></input>
                     <label>Birthday</label>
