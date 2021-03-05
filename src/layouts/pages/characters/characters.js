@@ -34,7 +34,7 @@ function Characters (props) {
     return (
         <>
             <Header />
-            <button onClick={handleAdd}>Add New Character</button>
+            <div id='addCharButton'><button onClick={handleAdd}>Add New Character</button></div>
             <div id='main'>
             {chars.map(char => (
                 <div className='card'>
@@ -43,68 +43,62 @@ function Characters (props) {
                 : <img src={placeholderImg} style={{width:'100%',}}/>}
                 <h3>{char.charSheet.firstName} {char.charSheet.lastName}</h3>
                     <div className='container'>
-                        <div id='general'>
-                        <span className='char-sheet'>
+                        <div id='char-info'>
+                            {/* conditional rendering */}
+                            {char.charSheet.middleName ?
+                            <span className='char-sheet'>
+                                <p>Full Name:</p>
+                                <p>{char.charSheet.firstName} {char.charSheet.middleName} {char.charSheet.lastName}</p>
+                            </span>
                             
-                        </span>
+                            :null}
 
-                        {/* conditional rendering */}
-                        {char.charSheet.middleName ?
-                        <span className='char-sheet'>
-                            <p>Full Name:</p>
-                            <p>{char.charSheet.firstName} {char.charSheet.middleName} {char.charSheet.lastName}</p>
-                        </span>
+            
+                            {char.charSheet.nicknames ? 
+                            <span className='char-sheet'>
+                                <p>Nicknames: </p>
+                                <p>{char.charSheet.nicknames}</p>
+                            </span>
+                            : null }
+
+                            {char.charSheet.birthday ?
+                            <span className='char-sheet'>
+                                <p>Birthday: </p>
+                                <p>{char.charSheet.birthday}</p>
+                            </span>
+                            : null }
+
+                            {char.charSheet.birthplace ?
+                            <span className='char-sheet'>
+                                <p>Birthplace: </p>
+                                <p>{char.charSheet.birthplace}</p>
+                            </span>
+                            : null }
+
+                            {char.charSheet.age ?
+                            <span className='char-sheet'>
+                                <p>Age: </p>
+                                <p>{char.charSheet.age}</p>
+                            </span>
+                            : null }    
                         
-                        :null}
+                        
+                            {char.charSheet.gender ?
+                            <span className='char-sheet'>
+                                <p>Gender: </p>
+                                <p>{char.charSheet.gender}</p>
+                            </span>
+                            : null } 
 
-        
-                        {char.charSheet.nicknames ? 
-                        <span className='char-sheet'>
-                            <p>Nicknames: </p>
-                            <p>{char.charSheet.nicknames}</p>
-                        </span>
-                        : null }
-
-                        {char.charSheet.birthday ?
-                        <span className='char-sheet'>
-                        <p>Birthday: </p>
-                        <p>{char.charSheet.birthday}</p>
-                        </span>
-                    : null }
-
-                        {char.charSheet.birthplace ?
-                        <span className='char-sheet'>
-                        <p>Birthplace: </p>
-                        <p>{char.charSheet.birthplace}</p>
-                        </span>
-                    : null }
-
-                        {char.charSheet.age ?
-                        <span className='char-sheet'>
-                        <p>Age: </p>
-                        <p>{char.charSheet.age}</p>
-                        </span>
-                    : null }    
-                       
-                       
-                        {char.charSheet.gender ?
-                        <span className='char-sheet'>
-                        <p>Gender: </p>
-                        <p>{char.charSheet.gender}</p>
-                        </span>
-                    : null } 
-
-                        {char.charSheet.occupation ?
-                        <span className='char-sheet'>
-                        <p>Occupation: </p>
-                        <p>{char.charSheet.occupation}</p>
-                        </span>
-                    : null } 
-
-
+                            {char.charSheet.occupation ?
+                            <span className='char-sheet'>
+                                <p>Occupation: </p>
+                                <p>{char.charSheet.occupation}</p>
+                            </span>
+                             : null } 
                         </div>
-                        
-
+                        <button>Edit</button>
+                       
                         
                     </div>
                 </div>

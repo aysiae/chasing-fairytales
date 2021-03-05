@@ -14,6 +14,11 @@ body {
     background-color: black;
 }
 
+#char-info {
+  overflow: scroll;
+  width: 100%;
+}
+
 
 .char-sheet {
   height: 30px; 
@@ -22,6 +27,11 @@ body {
   }
 }
 
+#addCharButton {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
 
 .card {
@@ -52,11 +62,18 @@ body {
   
   /* Add some padding inside the card container */
   .container {
-    padding: 2px 16px;
+    padding: 25px;
     height: 200px;
-    padding-bottom: 50px;
     display: flex;
-    overflow: scroll;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    button {
+      margin-top: 10px;
+      width: 80%;
+      height: 25px;
+    }
   }
 
   @media(max-width: 500px) {
