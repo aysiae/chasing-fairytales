@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+
+
+$parisienne: 'Parisienne', cursive;
+
 #main {
     justify-content: center;
     padding-top: 25px;
@@ -8,6 +13,16 @@ body {
     background-color: black;
 }
 
+
+.char-sheet {
+  height: 30px; 
+  p {
+    margin-right: 5px;
+  }
+}
+
+
+
 .card {
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -16,6 +31,17 @@ body {
     margin: 10px;
     background-color: white;
     color: black;
+
+    h3 {
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: -30px;
+      padding-bottom: 30px;
+      border-bottom: none;
+      text-align: center;
+      font-family: $parisienne;
+      font-size: 25px;
+    }
   }
   
   /* On mouse-over, add a deeper shadow */
@@ -26,4 +52,8 @@ body {
   /* Add some padding inside the card container */
   .container {
     padding: 2px 16px;
+    height: 200px;
+    padding-bottom: 50px;
+    display: flex;
+    overflow: scroll;
   }

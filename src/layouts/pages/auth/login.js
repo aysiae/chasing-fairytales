@@ -45,7 +45,7 @@ function Login (props) {
 
     return(
         <>
-        <div className='container'>
+        <div className='login-container'>
             <h2>hello writr!</h2>
             <div className='login'>
                 <form style={{marginTop: '50px'}}>
