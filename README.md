@@ -24,6 +24,10 @@ Writrs solves the pain point of giving writers a starting point to collect and f
 ![ERD](./public/assets/ERD.png)
 
 
+### Wire Frames
+![Splash Page](./public/Splash.png)
+
+
 ### Planned Use of Technology:
 - JavaScript as the main language using ReactJS
 - Redux used for global state management
