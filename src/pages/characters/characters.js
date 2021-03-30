@@ -1,6 +1,6 @@
 // import {connect} from 'react-redux';
-import {getAll} from '../../../firebase/database/chars'
-import {Auth} from '../../../firebase/firebase'
+import {getAll} from '../../firebase/database/chars'
+import {Auth} from '../../firebase/firebase'
 import {useState, useEffect} from 'react'
 import {useHistory} from 'react-router-dom';
 

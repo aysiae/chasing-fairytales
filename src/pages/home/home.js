@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {Auth} from '../../../firebase/firebase'
+import {Auth} from '../../firebase/firebase'
 
 
 // components 
@@ -10,12 +10,7 @@ import Footer from '../../components/footer/footer';
 import './home.scss'
 
 
-const mapStateToProps = state => ({
-    characters: state.characters.chars,
-})
-
 function Home (props) {
-
 
     return (
         <>
@@ -56,4 +51,4 @@ Meow meow small kitty warm kitty little balls of fur adventure always eats owner
     )
 }
 
-export default connect(mapStateToProps)(Home);
+export default Home;

@@ -5,11 +5,10 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
 // reducers
-import characters from './reducers/characters'
 
 
 // combine reducers
-let reducers = combineReducers({characters})
+let reducers = combineReducers({})
 
 const store = () => {
     return createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))

@@ -1,8 +1,8 @@
-import Home from './layouts/pages/home/home'
-import HeroHeader from './layouts/components/header/hero-header.js'
-import Login from './layouts/pages/auth/login'
-import CharacterForm from './layouts/pages/characters/character-form'
-import Characters from './layouts/pages/characters/characters'
+import Home from './pages/home/home'
+import HeroHeader from './components/header/hero-header.js'
+import Login from './pages/auth/login'
+import CharacterForm from './pages/characters/character-form'
+import Characters from './pages/characters/characters'
 import PrivateRoutes from './routes/private'
 import {
   BrowserRouter as Router,
