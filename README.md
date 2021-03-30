@@ -9,6 +9,8 @@ Writrs solves the pain point of giving writers a starting point to collect and f
 
 
 ## Feature Tasks:
+
+### MVP
 - Authentication (using Firebase email/password auth)
 - Public Vs Protected Routes
     - **Public Routes:** Login, Register, Splash Page
@@ -16,6 +18,12 @@ Writrs solves the pain point of giving writers a starting point to collect and f
         - many of these pages are intended to save user input to a database, which right now is intended to be Firebase Cloudstore database. 
 - Different Coloring Schemes (Light mode/Dark mode/Unicorn mode/Colorblind mode)
 - Mobile responsiveness 
+
+### Stretch/Longterm:
+- Messaging System
+- Scenes Collaboration 
+- Following System 
+- Account Deactivation 
 
 *More in depth features tasks can be found:* [Here](https://docs.google.com/document/d/1NnjqUHORVeH5KJRu3KWhKPHNt_6FmsXcjSidjeyr8cs/edit?usp=sharing)
 
@@ -105,3 +113,5 @@ localhost:3000/universe/:id
 - SCSS for additional styling
 - Firebase for authentication and database 
 - Socket.io for messaging 
+- Integration with Pinterest API
+- Creating a RESTful API for the writing prompts
