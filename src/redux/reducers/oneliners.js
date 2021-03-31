@@ -4,7 +4,7 @@ let initialState = {oneliners: []}
 
 const url = 'https://writrs-api.herokuapp.com/oneliner';
 
-export const get = async () => dispatch => {
+export const get = () => dispatch => {
     return superagent.get(url)
     .then(res  => {
         dispatch(getAction(JSON.parse(res.text)))
