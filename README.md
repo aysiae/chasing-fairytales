@@ -4,7 +4,7 @@
 
 ### Links & Resources
 - RESTful API: [Writrs API](https://writrs-api.herokuapp.com/oneliner)
-- Development Deployment: [Writrs App](https://writrs-app-dev.herokuapp.com/)
+- Development Deployment: [Writrs App](https://writrs-d3000.web.app/welcome)
 - Official Deployment: Coming Soon
 
 
