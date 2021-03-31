@@ -24,6 +24,9 @@ function App() {
       <Route exact path='/login'>
         <Login />
       </Route>
+      <Route exact path='/welcome'>
+        <Splash/>
+      </Route>
       <Route exact path ='/chars/add'>
           <CharacterForm/>
       </Route>

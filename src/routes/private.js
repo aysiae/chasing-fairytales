@@ -9,7 +9,7 @@ function PrivateRoutes({component: Component, ...rest}) {
         <Route {...rest} render={props => (
             Auth.currentUser ?
                 <Component {...props} />
-            : <Redirect to="/login" />
+            : <Redirect to="/welcome" />
         )} />
     );
 }

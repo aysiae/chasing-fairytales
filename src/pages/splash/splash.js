@@ -1,4 +1,6 @@
 import './splash.scss'
+import Footer from '../../components/footer/footer.js'
+
 import {Link} from 'react-router-dom';
 
 function Splash () {
@@ -17,6 +19,7 @@ function Splash () {
                     </span>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }
