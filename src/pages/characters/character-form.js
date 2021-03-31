@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {useHistory} from 'react-router-dom'
 import Header from '../../components/header/header'
-import {addCharacter} from '../../../firebase/database/chars'
+import {addCharacter} from '../../firebase/database/chars'
 import { v4 as uuid } from 'uuid';
 import './character-form.scss'
 

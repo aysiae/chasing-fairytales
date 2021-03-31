@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {Auth} from '../../../firebase/firebase';
+import {Auth} from '../../firebase/firebase';
 import {useHistory} from 'react-router-dom';
 import './login.scss';
 

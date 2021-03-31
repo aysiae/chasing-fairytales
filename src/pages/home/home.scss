@@ -1,0 +1,16 @@
+main {
+    display: flex;
+    flex-direction: rows;
+
+    div:first-child { 
+        width:30%;
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(67, 39, 83);
+
+
+        h3 {
+            border: none;
+        }
+    }
+}
