@@ -9,6 +9,14 @@ import Footer from '../../components/footer/footer';
 // styling
 import './home.scss'
 
+// redux states 
+import {get} from '../../redux/reducers/oneliners';
+
+const mapStateToProps = state => ({
+    oneliners: state.oneliners
+})
+
+const mapDispatchToProps = {get}
 
 function Home (props) {
 
@@ -33,4 +41,4 @@ function Home (props) {
     )
 }
 
-export default Home;
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -5,10 +5,10 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
 // reducers
-
+import oneliners from './reducers/oneliners';
 
 // combine reducers
-let reducers = combineReducers({})
+let reducers = combineReducers({oneliners})
 
 const store = () => {
     return createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))
