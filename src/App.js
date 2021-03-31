@@ -1,5 +1,6 @@
 import Home from './pages/home/home'
 import HeroHeader from './components/header/hero-header.js'
+import Splash from './pages/splash/splash.js';
 import Login from './pages/auth/login'
 import CharacterForm from './pages/characters/character-form'
 import Characters from './pages/characters/characters'
@@ -17,7 +18,7 @@ function App() {
     <Router>
       <Switch>
       <Route exaxt path='/test'>
-          <HeroHeader/>
+          <Splash/>
       </Route>
       <PrivateRoutes exact path='/' component={Home}/>
       <Route exact path='/login'>
