@@ -14,16 +14,17 @@ function Sidebar() {
                     </div>
             </div>
                 <div>
-                    <p>Profile</p>
-                    <p>Messages</p>
-                    <p>Add New Character</p>
-                    <p>Add New World</p>
-                    <p>Write New Scene</p>
-                    <p>Write New Note</p>
+                    <p>PROFILE</p>
+                    <p>MESSAGES</p>
+                    <p>ADD NEW CHARACTER</p>
+                    <p>ADD NEW WORLD</p>
+                    <p>ADD NEW UNIVERSE</p>
+                    <p>WRITE NEW SCENE</p>
+                    <p>WRITE NEW NOTE</p>
                 </div>
                 <div>
-                    <p>Account Settings</p>
-                    <p>Sign Out</p>
+                    <p>ACCOUNT SETTINGS</p>
+                    <p>SIGN OUT</p>
                 </div>
         </div>
         </>

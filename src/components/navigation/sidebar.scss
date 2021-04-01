@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap');
+
+$yanone-font: 'Yanone Kaffeesatz', sans-serif;
+
+
 #sidebar {
-    background-color: rgb(59, 33, 70);
+    background-color: rgb(17, 17, 17);
     width: 250px;
     height: 100vh;
     float: right;
@@ -7,10 +12,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-
-    h3 {
-        border: none;
-    }
+    font-family: $yanone-font;
 
     div:first-child {
           
@@ -44,7 +46,7 @@
             content: '';
             height: 1px;
             width: inherit;
-            background: #FFC107;
+            background: purple;
             left: 0;
             transition: all .3s ease-in;
           }
@@ -78,11 +80,32 @@
 
     }
 
+    div:nth-child(2) {
+        
+    }
+
     div:last-child {
         position: absolute;
         bottom: 0;
         width: 100%;
 
+    }
+
+    p {
+        position: relative;
+        color: white;
+        overflow: hidden;
+        background: linear-gradient(to right, purple, purple 50%, white 50% );
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% 100%;
+        background-position: 100%;
+        transition: background-position 1000ms ease;
+        text-decoration: none;
+        &:hover {
+            background-position: 0 100%;
+        }
     }
 
  }
