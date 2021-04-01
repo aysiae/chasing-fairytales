@@ -116,7 +116,6 @@ function Characters (props) {
 
             )})}
             </div>
-            <Footer />
         </>
     )
 }

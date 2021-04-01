@@ -1,10 +1,10 @@
-import Home from './pages/home/home'
-import HeroHeader from './components/header/hero-header.js'
+import Home from './pages/home/home';
+import Sidebar from './components/navigation/sidebar';
 import Splash from './pages/splash/splash.js';
-import Login from './pages/auth/login'
-import CharacterForm from './pages/characters/character-form'
-import Characters from './pages/characters/characters'
-import PrivateRoutes from './routes/private'
+import Login from './pages/auth/login';
+import CharacterForm from './pages/characters/character-form';
+import Characters from './pages/characters/characters';
+import PrivateRoutes from './routes/private';
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,7 +18,7 @@ function App() {
     <Router>
       <Switch>
       <Route exaxt path='/test'>
-          <Splash/>
+          <Sidebar/>
       </Route>
       <PrivateRoutes exact path='/' component={Home}/>
       <Route exact path='/login'>
