@@ -3,6 +3,15 @@
 $yanone-font: 'Yanone Kaffeesatz', sans-serif;
 
 
+#hamburger {
+    div  {
+        width: 30px;
+        height: 2px;
+        background-color: white;
+        margin: 6px 0;
+    }
+}
+
 #sidebar {
     background-color: rgb(17, 17, 17);
     width: 250px;
@@ -13,8 +22,10 @@ $yanone-font: 'Yanone Kaffeesatz', sans-serif;
     display: flex;
     flex-direction: column;
     font-family: $yanone-font;
+    animation: slideInRight 250ms 1;
+    animation-timing-function: linear;
 
-    div:first-child {
+    div:nth-child(1) {
           
           .outer {
             position: relative;
@@ -80,10 +91,6 @@ $yanone-font: 'Yanone Kaffeesatz', sans-serif;
 
     }
 
-    div:nth-child(2) {
-        
-    }
-
     div:last-child {
         position: absolute;
         bottom: 0;
@@ -109,4 +116,26 @@ $yanone-font: 'Yanone Kaffeesatz', sans-serif;
         }
     }
 
+ }
+
+ @keyframes slideInRight {
+     0% {
+         width: 0;
+     }
+
+     25% {
+         width: 62.5px;
+     }
+
+     50% {
+         width: 125px;
+     }
+
+     75% {
+         width: 187.5px;
+     }
+
+     100% {
+         width: 250px;
+     }
  }

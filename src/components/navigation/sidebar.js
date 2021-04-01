@@ -1,12 +1,17 @@
 import './sidebar.scss';
 import {Link} from 'react-router-dom';
+import { useState } from 'react';
 
 function Sidebar() {
-   
+    const [isVisible,setIsVisible] = useState(false);
+
+
     return (
         <>
+        {
+        isVisible ?
         <div id='sidebar'>
-            <div>
+            <div onClick={() => setIsVisible(false)}>
                 <div class="outer">
                         <div class="inner">
                             <label>Back</label>
@@ -27,6 +32,13 @@ function Sidebar() {
                     <p>SIGN OUT</p>
                 </div>
         </div>
+        :
+        <div id='hamburger' onClick={() => setIsVisible(true)}>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+}
         </>
     )
 }
