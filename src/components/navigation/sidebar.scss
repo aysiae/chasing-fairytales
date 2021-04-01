@@ -1,11 +1,88 @@
 #sidebar {
     background-color: rgb(59, 33, 70);
-    width: 25%;
+    width: 250px;
     height: 100vh;
     float: right;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 
-    ul {
-        padding-top: 10px;
-        list-style-type: none;
+    h3 {
+        border: none;
     }
-}
+
+    div:first-child {
+          
+          .outer {
+            position: relative;
+            margin: auto;
+            width: 30px;
+            margin-top: 75px;
+            margin-right: 20px;
+            float: right;
+            cursor: pointer;
+          }
+          
+          .inner {
+            width: inherit;
+            text-align: center;
+          }
+          
+          label { 
+            font-size: .8em; 
+            line-height: 4em;
+            text-transform: uppercase;
+            color: #fff;
+            transition: all .3s ease-in;
+            opacity: 0;
+            cursor: pointer;
+          }
+          
+          .inner:before, .inner:after {
+            position: absolute;
+            content: '';
+            height: 1px;
+            width: inherit;
+            background: #FFC107;
+            left: 0;
+            transition: all .3s ease-in;
+          }
+          
+          .inner:before {
+            top: 50%; 
+            transform: rotate(45deg);  
+          }
+          
+          .inner:after {  
+            bottom: 50%;
+            transform: rotate(-45deg);  
+          }
+          
+          .outer:hover label {
+            opacity: 1;
+          }
+          
+          .outer:hover .inner:before,
+          .outer:hover .inner:after {
+            transform: rotate(0);
+          }
+          
+          .outer:hover .inner:before {
+            top: 0;
+          }
+          
+          .outer:hover .inner:after {
+            bottom: 0;
+          }
+
+    }
+
+    div:last-child {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+
+    }
+
+ }

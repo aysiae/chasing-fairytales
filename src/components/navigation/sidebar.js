@@ -6,18 +6,25 @@ function Sidebar() {
     return (
         <>
         <div id='sidebar'>
-        <ul>
-            <li>Profile</li>
-            <li>Messages</li>
-            <li>Add New Character</li>
-            <li>Add New World</li>
-            <li>Write New Scene</li>
-            <li>Write New Note</li>
-        </ul>
-        <ul>
-            <li>Account Settings</li>
-            <li>Sign Out</li>
-        </ul>
+            <div>
+                <div class="outer">
+                        <div class="inner">
+                            <label>Back</label>
+                        </div>
+                    </div>
+            </div>
+                <div>
+                    <p>Profile</p>
+                    <p>Messages</p>
+                    <p>Add New Character</p>
+                    <p>Add New World</p>
+                    <p>Write New Scene</p>
+                    <p>Write New Note</p>
+                </div>
+                <div>
+                    <p>Account Settings</p>
+                    <p>Sign Out</p>
+                </div>
         </div>
         </>
     )
