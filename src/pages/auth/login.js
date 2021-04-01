@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {Auth} from '../../firebase/firebase';
+import {firebase, Auth} from '../../firebase/firebase';
 import {useHistory} from 'react-router-dom';
 import './login.scss';
 
@@ -27,17 +27,38 @@ function Login (props) {
     const doLogin = (event) => {
         const email1 = email;
         const password1 = password;
-        Auth.signInWithEmailAndPassword(email1, password1)
+        if(rememeberMe) {
+            Auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
             .then(() => {
-                setEmail(email1);
-                setPassword(password1);
-                history.push('/')
+                return Auth.signInWithEmailAndPassword(email1, password1)
+                .then(() => {
+                    setEmail(email1);
+                    setPassword(password1);
+                    history.push('/')
+                })
+                .catch((error) => {
+                    console.log('email', email1)
+                    console.log('err', error);
+                    alert("Invalid login id or password.");
+                });
+            }) 
+        } else {
+            Auth.setPersistence(firebase.auth.Auth.Persistence.NONE)
+            .then(() => {
+                return Auth.signInWithEmailAndPassword(email1, password1)
+                .then(() => {
+                    setEmail(email1);
+                    setPassword(password1);
+                    history.push('/')
+                })
+                .catch((error) => {
+                    console.log('email', email1)
+                    console.log('err', error);
+                    alert("Invalid login id or password.");
+                });
             })
-            .catch((error) => {
-                console.log('email', email1)
-                console.log('err', error);
-                alert("Invalid login id or password.");
-            });
+        }
+
         event.preventDefault();
     };
 

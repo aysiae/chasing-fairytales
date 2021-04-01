@@ -1,5 +1,5 @@
 {
-  "name": "chasing-fairytales",
+  "name": "Writrs",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.3",
+    "animate.css": "^4.1.1",
     "dotenv": "^8.2.0",
     "firebase": "^8.2.9",
     "history": "^5.0.0",

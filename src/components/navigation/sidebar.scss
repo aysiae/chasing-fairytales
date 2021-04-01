@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap');
+
+$yanone-font: 'Yanone Kaffeesatz', sans-serif;
+
+
+#hamburger {
+    div  {
+        width: 30px;
+        height: 2px;
+        background-color: white;
+        margin: 6px 0;
+    }
+}
+
+#sidebar {
+    background-color: rgb(17, 17, 17);
+    width: 250px;
+    height: 100vh;
+    float: right;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-family: $yanone-font;
+    animation: slideInRight 250ms 1;
+    animation-timing-function: linear;
+
+    div:nth-child(1) {
+          
+          .outer {
+            position: relative;
+            margin: auto;
+            width: 30px;
+            margin-top: 75px;
+            margin-right: 20px;
+            float: right;
+            cursor: pointer;
+          }
+          
+          .inner {
+            width: inherit;
+            text-align: center;
+          }
+          
+          label { 
+            font-size: .8em; 
+            line-height: 4em;
+            text-transform: uppercase;
+            color: #fff;
+            transition: all .3s ease-in;
+            opacity: 0;
+            cursor: pointer;
+          }
+          
+          .inner:before, .inner:after {
+            position: absolute;
+            content: '';
+            height: 1px;
+            width: inherit;
+            background: purple;
+            left: 0;
+            transition: all .3s ease-in;
+          }
+          
+          .inner:before {
+            top: 50%; 
+            transform: rotate(45deg);  
+          }
+          
+          .inner:after {  
+            bottom: 50%;
+            transform: rotate(-45deg);  
+          }
+          
+          .outer:hover label {
+            opacity: 1;
+          }
+          
+          .outer:hover .inner:before,
+          .outer:hover .inner:after {
+            transform: rotate(0);
+          }
+          
+          .outer:hover .inner:before {
+            top: 0;
+          }
+          
+          .outer:hover .inner:after {
+            bottom: 0;
+          }
+
+    }
+
+    div:last-child {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+
+    }
+
+    p {
+        position: relative;
+        color: white;
+        overflow: hidden;
+        background: linear-gradient(to right, purple, purple 50%, white 50% );
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% 100%;
+        background-position: 100%;
+        transition: background-position 1000ms ease;
+        text-decoration: none;
+        &:hover {
+            background-position: 0 100%;
+            cursor: pointer;
+        }
+    }
+
+ }
+
+ @keyframes slideInRight {
+     0% {
+         width: 0;
+     }
+
+     25% {
+         width: 62.5px;
+     }
+
+     50% {
+         width: 125px;
+     }
+
+     75% {
+         width: 187.5px;
+     }
+
+     100% {
+         width: 250px;
+     }
+ }
