@@ -50,7 +50,10 @@ function App(props) {
       <Route exact path='/scenes'>
           <Scenes/>
       </Route>
-      <PrivateRoutes exact path='/' auth={props.currUser.currUser} component={Home}/>
+      {/* <PrivateRoutes exact path='/' auth={props.currUser.currUser} component={Home}/> */}
+      <Route exact path='/'>
+        <Home/>
+        </Route>
       <Route exact path='/login'>
         <Login />
       </Route>
