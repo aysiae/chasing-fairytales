@@ -1,7 +1,17 @@
 import {useState} from 'react';
 import {firebase, Auth} from '../../firebase/firebase';
 import {useHistory} from 'react-router-dom';
+import {connect} from 'react-redux';
+
+// imports from other files
 import './login.scss';
+import {update} from '../../redux/reducers/authenticated';
+
+const mapDispatchToProps = {update};
+
+const mapStateToProps = state => ({
+    currUser: state.currUser
+})
 
 
 function Login (props) {
@@ -21,6 +31,21 @@ function Login (props) {
         }
     }
 
+    const isAuthenticated = async () => {
+        let current = null;
+         await Auth.onAuthStateChanged(user => {
+            if(user) {
+                current = user;
+                props.update({currUser:true, uid: current.uid})
+            } else {
+                current = false;
+                props.update({currUser: false, uid: null})
+            }
+        })
+        console.log('props', props.currUser);
+        return current;
+    }
+
 
     // TODO: add validators    
     
@@ -34,6 +59,7 @@ function Login (props) {
                 .then(() => {
                     setEmail(email1);
                     setPassword(password1);
+                    isAuthenticated();
                     history.push('/')
                 })
                 .catch((error) => {
@@ -43,12 +69,13 @@ function Login (props) {
                 });
             }) 
         } else {
-            Auth.setPersistence(firebase.auth.Auth.Persistence.NONE)
+            Auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
             .then(() => {
                 return Auth.signInWithEmailAndPassword(email1, password1)
                 .then(() => {
                     setEmail(email1);
                     setPassword(password1);
+                    isAuthenticated();
                     history.push('/')
                 })
                 .catch((error) => {
@@ -95,4 +122,4 @@ function Login (props) {
     
 }
 
-export default Login;
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -11,6 +11,13 @@ import Footer from '../../components/footer/footer';
 // styling
 import './characters.scss';
 
+// redux
+import {connect} from 'react-redux';
+
+const mapStateToProps = state  => ({
+    currUser: state.currUser,
+})
+
 
 function Characters (props) {
     const placeholderImg = 'https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2027&q=80';
@@ -18,8 +25,12 @@ function Characters (props) {
     const [chars, setChars] = useState([]);
     const history = useHistory();
 
+
     const loadCharacters = async () => {
-        setChars(await getAll(Auth.currentUser.uid));
+        console.log('user', props.currUser);
+        if(props.currUser.uid) {
+            setChars(await getAll(props.currUser.uid));
+        }  
         console.log(chars);
 
     }
@@ -120,4 +131,4 @@ function Characters (props) {
     )
 }
 
-export default Characters;
+export default connect(mapStateToProps)(Characters);

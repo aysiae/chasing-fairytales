@@ -6,10 +6,10 @@ import thunk from 'redux-thunk';
 
 // reducers
 import oneliners from './reducers/oneliners';
-import loginPersist from './reducers/isloggedin';
+import currUser from './reducers/authenticated';
 
 // combine reducers
-let reducers = combineReducers({oneliners, loginPersist})
+let reducers = combineReducers({oneliners, currUser})
 
 const store = () => {
     return createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))

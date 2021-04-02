@@ -7,14 +7,25 @@ $font-newsreader: 'Newsreader', serif;
     height: 200px;
     background-color: rgb(0, 0, 0);
     display: flex;
+    flex-direction: row;
     justify-content: center;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     border-bottom: 1px solid whitesmoke;
+
+    #burger {
+        position: absolute;
+        right: 0;
+        #hamburger {
+            margin-right: 100px;
+            margin-top: 50px;
+        }
+    }
     
 }
+
 
 
 h1 {

@@ -12,7 +12,15 @@ import {
   Link
 } from "react-router-dom";
 
-function App() {
+import {connect} from 'react-redux';
+const mapStateToProps = state => ({
+  currUser: state.currUser
+})
+
+
+function App(props) {
+
+  
   return (
     <>
     <Router>
@@ -20,7 +28,7 @@ function App() {
       <Route exaxt path='/test'>
           <Sidebar/>
       </Route>
-      <PrivateRoutes exact path='/' component={Home}/>
+      <PrivateRoutes exact path='/' auth={props.currUser.currUser} component={Home}/>
       <Route exact path='/login'>
         <Login />
       </Route>
@@ -39,4 +47,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect(mapStateToProps)(App);
