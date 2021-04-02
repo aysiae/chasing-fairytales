@@ -1,9 +1,28 @@
 import './sidebar.scss';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import { useState } from 'react';
+import {Auth} from '../../firebase/firebase';
 
-function Sidebar() {
+import {update} from '../../redux/reducers/authenticated';
+import {connect} from 'react-redux';
+
+const mapStateToProps = state => ({
+    currUser: state.currUser,
+})
+
+const mapDispatchToProps = {update}
+
+function Sidebar(props) {
     const [isVisible,setIsVisible] = useState(false);
+    const history = useHistory();
+
+    //TODO: add <Link to='/'> all the buttons 
+
+    const handleSignOut = async () => {
+        Auth.signOut();
+        props.update()
+        history.push('/welcome');
+    }
 
 
     return (
@@ -12,8 +31,8 @@ function Sidebar() {
         isVisible ?
         <div id='sidebar'>
             <div onClick={() => setIsVisible(false)}>
-                <div class="outer">
-                        <div class="inner">
+                <div className="outer">
+                        <div className="inner">
                             <label>Back</label>
                         </div>
                     </div>
@@ -29,7 +48,7 @@ function Sidebar() {
                 </div>
                 <div>
                     <p>ACCOUNT SETTINGS</p>
-                    <p>SIGN OUT</p>
+                    <p onClick={handleSignOut}>SIGN OUT</p>
                 </div>
         </div>
         :
@@ -44,4 +63,4 @@ function Sidebar() {
 }
 
 
-export default Sidebar;
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

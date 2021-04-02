@@ -1,15 +1,18 @@
 import React, {useEffect, useState} from 'react';
-import {useHistory} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 import './navigation.scss'
 
 
 function Nav(props) {
   const history = useHistory();
   const [categories, setCategories] = useState([
-    {value: 'Home', route: '/' , status: true},
-    {value:'Characters', route: '/chars', status: false},
-    {value:'Places', route:'/places' ,status: false},
-    {value:'Scenes', route:'/scenes', status: false}])
+    {value: 'Home', route: '/'},
+    {value:'Characters', route: '/chars'},
+    {value:'Worlds', route:'/worlds'},
+    {value: 'Universes', route:'/universes'},
+    {value:'Scenes', route:'/scenes'},
+    {value: 'Notes', route: '/notes'}
+])
 
 
   const handleClick = (e, item) => {
@@ -28,12 +31,15 @@ function Nav(props) {
 
   return (
     <div id='nav'>
-      <span>
-        {categories.map(item => (
-          <h3 className={item.status ? 'active': null}
-          onClick={(e) => handleClick(e, item)}>{item.value}</h3>
-        ))}
-      </span>
+      <nav class="stroke">
+          <ul>
+            {categories.map(category => (
+              <li><a href={category.route}>{category.value}</a></li>
+            ))
+
+            }
+          </ul>
+        </nav>
     </div>
   );
 }
