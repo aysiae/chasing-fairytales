@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,300;1,500&display=swap');
+ 
+$font-newsreader: 'Newsreader', serif;
+
 body {
     color: white;
 }
@@ -39,6 +43,7 @@ nav {
     font-weight: 800;
     text-transform: uppercase;
     margin: 0 10px;
+    font-family: $font-newsreader;
   }
   nav ul li a,
   nav ul li a:after,
