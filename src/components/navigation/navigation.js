@@ -28,12 +28,15 @@ function Nav(props) {
 
   return (
     <div id='nav'>
-      <span>
-        {categories.map(item => (
-          <h3 className={item.status ? 'active': null}
-          onClick={(e) => handleClick(e, item)}>{item.value}</h3>
-        ))}
-      </span>
+      <nav class="stroke">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Downloads</a></li>
+            <li><a href="#">More</a></li>
+            <li><a href="#">Nice staff</a></li>
+          </ul>
+        </nav>
     </div>
   );
 }
