@@ -121,3 +121,4 @@ localhost:3000/universe/:id
 - Socket.io for messaging 
 - Integration with Pinterest API
 - Creating a RESTful API for the writing prompts
+- Cookies for storing persistent login
