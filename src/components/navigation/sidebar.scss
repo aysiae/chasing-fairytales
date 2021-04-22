@@ -25,6 +25,7 @@ $yanone-font: 'Yanone Kaffeesatz', sans-serif;
     font-family: $yanone-font;
     animation: slideInRight 250ms 1;
     animation-timing-function: linear;
+    z-index: 1;
 
     div:nth-child(1) {
           

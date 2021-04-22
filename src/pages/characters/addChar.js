@@ -1,39 +1,29 @@
-import editor from '../../editorjs/editor-config';
 import './addChar.scss';
-
+import {connect} from 'react-redux';
+import handleVisibility from '../../redux/reducers/characters';
 // configs for EditorJS
 
 
+const mapDispatchToProps = {handleVisibility}
 
-function AddCharacter() {
+const mapStateToProps = state => ({
+    categories: state.categories.categories
+})
+
+function AddCharacter(props) {
+
+    const handleTest = () => {
+        console.log(props.categories);
+    }
+
+
     return(
         <>
         <h3>Add Character</h3>
-        <form>
-        <div id='basics'>
-        
-        </div>
-        <div id='physical'>
-
-        </div>
-        <div id='personality'>
-
-        </div>
-        <div id='star-signs'>
-
-        </div>
-        <div id='family'>
-
-        </div>
-        <div id='love'>
-
-        </div>
-        <div id='about'>
-
-        </div>
-        </form>
+        <button onClick={handleTest}>test</button>
+        {props.categories.map(item=> (<p>{item.name}</p>))}
         </>
     )
 }
 
-export default AddCharacter;
+export default connect(mapStateToProps,mapDispatchToProps)(AddCharacter);
