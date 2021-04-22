@@ -67,8 +67,6 @@ function CharacterForm(props) {
             <h3>Character Sheet:</h3>
                 <fieldset>
                     <h3>Basics</h3>
-                    {isVisible.basics ? 
-                    <>
                     <p>* are required fields</p>
                     <label>Image URL</label>
                     <input onChange={handleBody} name='img' type='text'></input>
@@ -94,8 +92,6 @@ function CharacterForm(props) {
                         </select>
                     <label>Occupation</label>
                     <input onChange={handleBody} name='occupation' type='text'></input>
-                    </>
-                    : null }
                     </fieldset>
 
                     <fieldset>
