@@ -1,6 +1,6 @@
 let initialState = {
     categories: [
-        {value: 'basics', name:'Basics', visible: false},
+        {value: 'basics', name:'Basics', visible: false,},
         {value: 'physical', name: 'Physical Appearance', visible: false},
         {value: 'personality', name:'Personality', visible: false},
         {value: 'starSigns', name:'Star Signs' , visible: false},
