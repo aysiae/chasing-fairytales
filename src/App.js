@@ -9,6 +9,7 @@ import Worlds from './pages/worlds/worlds';
 import Universes from './pages/universes/universes';
 import Scenes from './pages/scenes/scenes';
 import Notes from './pages/notes/notes';
+import AddCharacter from './pages/characters/addChar';
 import PrivateRoutes from './routes/private';
 
 // dependencies
@@ -37,6 +38,7 @@ function App(props) {
       <Switch>
       <Route exact path='/test'>
           <Sidebar/>
+          <AddCharacter/>
       </Route>
       <Route exact path='/worlds'>
           <Worlds/>

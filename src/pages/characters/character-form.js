@@ -66,8 +66,8 @@ function CharacterForm(props) {
         <Header />
         <div id='form'>
             <form>
+            <h3>Character Sheet:</h3>
                 <fieldset>
-                    <h2>Character Sheet:</h2>
                     <h3>Basics</h3>
                     <p>* are required fields</p>
                     <label>Image URL</label>
@@ -99,7 +99,29 @@ function CharacterForm(props) {
                         <option value='No'>No</option>
                         <option value='Yes'>Yes</option>
                     </select>
-                    
+                    </fieldset>
+
+                    <fieldset>
+                        <h3>Physical Appearance</h3>
+                        <label>Height:</label>
+                        <input name='height' type='text'/>
+                        <label>Weight:</label>
+                        <input name='weight' type='text'/>
+                        <label>Build:</label>
+                        <input name='build' type='text'/>
+                        <label>Eye Color:</label>
+                        <input name='eyes' type='text'/>
+                        <label>Hair Color:</label>
+                        <input name='haircolor' type='text'/>
+                        <label>Hair Style:</label>
+                        <input name='hairstyle' type='text'/>
+                        <label>Distinguishing Features:</label>
+                        <input name='dist-features' type='text'/>
+                        <label>Body Modifications:</label>
+                        <input name='bodymods' type='text'/>
+                    </fieldset>
+
+                    <fieldset>
                     <h3>Personality</h3>
                     <label>Moral Alignment:</label>
                     <select onChange={handleBody} name='moralAlign'> 
@@ -119,7 +141,9 @@ function CharacterForm(props) {
                     <input onChange={handleBody} name='strengths' className='textArea' type='textarea'></input>
                     <label>Negative Traits (flaws):</label>
                     <input onChange={handleBody} name='flaws' className='textArea' type='textarea'></input>
+                    </fieldset>
 
+                    <fieldset>
                     <h3>Star Signs</h3>
                     <label>Sun</label>
                     <select onChange={handleBody} name='sunSign'>
@@ -139,7 +163,9 @@ function CharacterForm(props) {
                             <option value={sign}>{sign}</option>
                         ))}
                     </select>
+                    </fieldset>
 
+                    <fieldset>
                     <h3>Family & Heritage</h3>
                     <label>Ethnicity:</label>
                     <input onChange={handleBody} name='ethnicity' type='text'></input>
@@ -157,7 +183,9 @@ function CharacterForm(props) {
                     <input onChange={handleBody} name='siblings' type='text'></input>
                     <label>Children:</label>
                     <input onChange={handleBody} name='kids' type='text'></input>
+                    </fieldset>
 
+                    <fieldset>
                     <h3>Love & Romance</h3>
                     <label>Love Type:</label>
                     <select onChange={handleBody} name='loveType'>
@@ -198,6 +226,8 @@ function CharacterForm(props) {
                     <input onChange={handleBody} name='shippedWithWho' type='text'></input>
                     </>
                 : null}
+                    </fieldset>
+                    <fieldset>
 
                 { isSuper ?
                 <>
@@ -213,7 +243,9 @@ function CharacterForm(props) {
                 </>
                 : null
                 }
-
+                </fieldset>
+                
+                <fieldset>
                 <h3>About:</h3>
                 <label>Biography:</label>
                 <input onChange={handleBody} name='bio' className='textArea' type='textarea'></input>
@@ -223,8 +255,9 @@ function CharacterForm(props) {
                 <input onChange={handleBody} name='likes' className='textArea' type='textarea'></input>
                 <label>Dislikes:</label>
                 <input onChange={handleBody} name='dislikes' className='textArea' type='textarea'></input> 
-
+                </fieldset>
                 
+                <fieldset>
                 <h3>Additional Notes:</h3>
                 <input onChange={handleBody} name='notes' className='textArea' type='textarea'></input>
                 <button id='submit' onClick={handleSubmit}>Submit</button>
