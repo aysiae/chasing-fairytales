@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 // components 
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
+import OnelinerPrompts from '../../components/oneliners/oneline-prompts';
 
 // styling
 import './home.scss'
@@ -21,31 +22,13 @@ const mapDispatchToProps = {get}
 
 // functional component starts here 
 function Home (props) {
-    const [newPrompt, setNewPrompt] = useState('Why are you looking at me like that?');
-
-    const getPrompts = () => {
-        props.get();
-    }
-
-    useEffect(getPrompts, []);
-
-    const getRandomPrompt = () => {
-        let idx = Math.floor(Math.random() * (props.oneliners.length));
-        setNewPrompt(props.oneliners[idx].prompt);
-        console.log('new', newPrompt);
-    }
 
 
     return (
         <>
             <Header />
             <main className='home-dash'>
-                <div id='home-prompts'>
-                    <h3>Quick Prompts:</h3>
-                    <textarea placeholder={`"${newPrompt}"`} rows='20' cols='30'/>
-                    <button onClick={getRandomPrompt}>New Prompt</button>
-                    
-                </div>
+                <OnelinerPrompts/>
                 <div id='home-chars'>
 
                 </div>
