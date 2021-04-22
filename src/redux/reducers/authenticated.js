@@ -1,4 +1,4 @@
-let intiialState={currUser: false, uid: ''}
+let initialState={currUser: false, uid: ''}
 
 export const update = payload => {
     return {
@@ -8,7 +8,7 @@ export const update = payload => {
 }
 
 
-export default (state=intiialState, action) => { 
+export default (state=initialState, action) => { 
     let {type, payload} = action;
     switch(type) {
         case 'UPDATE':

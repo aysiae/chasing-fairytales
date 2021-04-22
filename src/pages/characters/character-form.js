@@ -24,7 +24,7 @@ function CharacterForm(props) {
     
     // state 
     const [inRelationship, setInRelationship] = useState(false)
-    const [isSuper, setIsSuper] = useState(false);
+
     
 
     // body
@@ -38,13 +38,11 @@ function CharacterForm(props) {
         }
     }
 
-    const handleIsSuper = (value) => {
-        if(value === 'Yes') {
-            setIsSuper(true);
-        } else {
-            setIsSuper(false);
-        }
+    const handleIsVisible = (e) => {
+        console.log(e.target.value);
+        // isVisible[e.target.value] = true;
     }
+
 
     const handleBody = (e) => {
         charSheet[e.target.name] = e.target.value; 
@@ -69,6 +67,8 @@ function CharacterForm(props) {
             <h3>Character Sheet:</h3>
                 <fieldset>
                     <h3>Basics</h3>
+                    {isVisible.basics ? 
+                    <>
                     <p>* are required fields</p>
                     <label>Image URL</label>
                     <input onChange={handleBody} name='img' type='text'></input>
@@ -94,11 +94,8 @@ function CharacterForm(props) {
                         </select>
                     <label>Occupation</label>
                     <input onChange={handleBody} name='occupation' type='text'></input>
-                    <label>Is supernatural?</label>
-                    <select onChange={handleBody} name='super' onChange={(e) => handleIsSuper(e.target.value)}>
-                        <option value='No'>No</option>
-                        <option value='Yes'>Yes</option>
-                    </select>
+                    </>
+                    : null }
                     </fieldset>
 
                     <fieldset>
@@ -227,10 +224,8 @@ function CharacterForm(props) {
                     </>
                 : null}
                     </fieldset>
-                    <fieldset>
 
-                { isSuper ?
-                <>
+                <fieldset>
                  <h3>Supernatural</h3>
                 <label>Supernatural Type:</label>
                 <input onChange={handleBody} name='type' type='text'></input>
@@ -240,9 +235,7 @@ function CharacterForm(props) {
                 <input onChange={handleBody} name='superOrigin' className='textArea' type='textarea'></input>
                 <label>Supernatural Powers:</label>
                 <input onChange={handleBody} name='superPowers' className='textArea' type='textarea'></input>
-                </>
-                : null
-                }
+    
                 </fieldset>
                 
                 <fieldset>
