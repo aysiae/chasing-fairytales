@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {Auth} from '../../firebase/firebase'
 import { useEffect, useState } from 'react';
-
+import editor from '../../editorjs/editor-config';
 
 // styling
 import './oneline-prompts.scss'

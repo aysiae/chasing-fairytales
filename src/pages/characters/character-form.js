@@ -67,7 +67,7 @@ function CharacterForm(props) {
         <div id='form'>
             <form>
                 <fieldset>
-                    <h2>Character Sheet:</h2>
+                    <h3>Character Sheet:</h3>
                     <h3>Basics</h3>
                     <p>* are required fields</p>
                     <label>Image URL</label>

@@ -7,6 +7,7 @@ import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import OnelinerPrompts from '../../components/oneliners/oneline-prompts';
 
+
 // styling
 import './home.scss'
 
