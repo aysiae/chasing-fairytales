@@ -24,6 +24,7 @@ function CharacterForm(props) {
     
     // state 
     const [inRelationship, setInRelationship] = useState(false)
+    const [img, setImg] = useState('');
     const [viewSections, setViewSections] = useState({
         basics: false,
         physical: false,
@@ -41,6 +42,7 @@ function CharacterForm(props) {
 
     // body
     const charSheet = {};
+    const placeholderImg = 'https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2027&q=80';
 
     const handleInRelationship = (value) => {
         if(value !== 'Single') {
@@ -62,6 +64,9 @@ function CharacterForm(props) {
 
     const handleBody = (e) => {
         charSheet[e.target.name] = e.target.value; 
+        if(e.target.name == 'img') {
+            setImg(e.target.value);
+        }
     }
 
 
@@ -79,8 +84,12 @@ function CharacterForm(props) {
         <>
         <Header />
         <div id='form'>
-            <form>
-            <h3>Character Sheet:</h3>
+            <div>
+                <img src={img ? img : placeholderImg}></img>  
+                <button>Add Image URL</button>
+            </div>
+            <form>  
+                <h3>Character Sheet:</h3>
 
 
 
