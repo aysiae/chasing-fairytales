@@ -13,25 +13,24 @@ import './characters.scss';
 
 // redux
 import {connect} from 'react-redux';
+import {getChars} from '../../redux/reducers/characters';
 
-const mapStateToProps = state  => ({
-    currUser: state.currUser,
+const mapDispatchToProps = {getChars}
+
+const mapStateToProps = state => ({
+    chars: state.characters.characters
 })
-
 
 function Characters (props) {
     const placeholderImg = 'https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2027&q=80';
-    // do I want characters to be accessed globally? 
-    const [chars, setChars] = useState([]);
+    const [uid, setUID] = useState(document.cookie.split(';')[0].split('=')[1]);
     const history = useHistory();
 
 
     const loadCharacters = async () => {
-        console.log('user', props.currUser);
-        if(props.currUser.uid) {
-            setChars(await getAll(props.currUser.uid));
-        }  
-        console.log(chars);
+        let chars = await getAll(uid);
+        props.getChars(chars); 
+        console.log('chars', props.chars);
 
     }
 
@@ -53,7 +52,7 @@ function Characters (props) {
             <Header />
             <div id='addCharButton'><button onClick={handleAdd}>Add New Character</button></div>
             <div id='main'>
-            {chars.map(char => {
+            {props.chars.map(char => {
                 
                 char.edit = false;
                 return (
@@ -127,9 +126,9 @@ function Characters (props) {
 
             )})}
             </div>
-            <Footer/>
+            {/* <Footer/> */}
         </>
     )
 }
 
-export default connect(mapStateToProps)(Characters);
+export default connect(mapStateToProps,mapDispatchToProps)(Characters);

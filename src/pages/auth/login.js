@@ -66,21 +66,18 @@ function Login (props) {
         const email1 = email;
         const password1 = password;
         event.preventDefault();
-        Auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
-        .then(() => {
-            return Auth.signInWithEmailAndPassword(email1, password1)
+        Auth.signInWithEmailAndPassword(email1, password1)
             .then(() => {
                 setEmail(email1);
                 setPassword(password1);
                 isAuthenticated(rememeberMe);
-                history.push('/')
+                history.push('/') //TODO: why does this still load /welcome and not the homepage?
             })
             .catch((error) => {
                 console.log('email', email1)
                 console.log('err', error);
                 alert("Invalid login id or password.");
             });
-        }) 
     };
 
 

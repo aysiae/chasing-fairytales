@@ -13,4 +13,25 @@ main {
             border: none;
         }
     }
+
+    div:nth-of-type(2) {
+        padding-left: 5%;
+
+        div {
+            display: flex;
+        }
+        span {
+            display: flex;
+            flex-direction: column;
+        }
+        img {
+            object-fit: cover;
+            width: 100px;
+            height: 100px;
+        }
+
+        h4 {
+            color: white;
+        }
+    }
 }

@@ -9,7 +9,8 @@ function PrivateRoutes({component: Component, ...rest}) {
         } else {
             return '';
         }});
-    const [authed, setAuthed] = useState(() => {
+   
+        const [authed, setAuthed] = useState(() => {
         if(cookies) {
             return parseInt(cookies[1].split('=')[1])
         } else {
