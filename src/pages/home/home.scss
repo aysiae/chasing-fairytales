@@ -6,7 +6,7 @@ main {
         width:30%;
         display: flex;
         flex-direction: column;
-        background-color: rgb(67, 39, 83);
+        margin-left: 5%;
 
 
         h3 {
@@ -19,10 +19,12 @@ main {
 
         div {
             display: flex;
+            flex-wrap: wrap;
         }
         span {
             display: flex;
             flex-direction: column;
+            width: 30%;
         }
         img {
             object-fit: cover;
