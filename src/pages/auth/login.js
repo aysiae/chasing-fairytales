@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 // imports from other files
 import './login.scss';
 import {update} from '../../redux/reducers/authenticated';
+import validators from './validators';
 
 const mapDispatchToProps = {update};
 
@@ -28,6 +29,18 @@ function Login (props) {
             setRememberMe(false);
         } else {
             setRememberMe(true);
+        }
+    }
+
+    const onFill = (e) => {
+        console.log('inside onFill')
+        if(e.target.name == 'email') {
+            validators.email.valid = validators.email.rules[0].test.test(e.target.value);
+            if(validators.email.valid) {
+                setEmail(e.target.value)
+            } else {
+                alert(validators.email.rules[0].message);
+            }
         }
     }
 
@@ -102,13 +115,13 @@ function Login (props) {
                         name='email' 
                         type='email'
                        placeholder='Email'
-                       onChange={(e) => setEmail(e.target.value)}></input> {' '}
+                       onBlur={onFill}></input> {' '}
                     <label className='label'>Password:</label>
                     <input className='text' 
                         name='password' 
                         type='password'
                         placeholder='Password'
-                        onChange={(e)=> setPassword(e.target.value)}></input>
+                        onBlur={onFill}></input>
                     <span>
                     <input onClick={setRemember} type='checkbox' id='remember'></input>
                     <label>Remember Me?</label>
