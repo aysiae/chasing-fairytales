@@ -1,23 +1,18 @@
 import {useState} from 'react';
 import {firebase, Auth} from '../../firebase/firebase';
 import {useHistory} from 'react-router-dom';
-import {connect} from 'react-redux';
 
 // imports from other files
 import './login.scss';
-import {update} from '../../redux/reducers/authenticated';
+import validators from './validators';
 
-const mapDispatchToProps = {update};
-
-const mapStateToProps = state => ({
-    currUser: state.currUser
-})
 
 
 function Login (props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rememeberMe, setRememberMe] = useState(false);
+    const [isValid, setIsValid] = useState(true);
 
     const history = useHistory();
 
@@ -26,67 +21,66 @@ function Login (props) {
     const setRemember = () => {
         if(rememeberMe) {
             setRememberMe(false);
+            console.log(rememeberMe)
         } else {
             setRememberMe(true);
+            console.log(rememeberMe)
         }
     }
 
-    const isAuthenticated = async () => {
+    const onFill = (e) => {
+        if(e.target.name == 'email') {
+            validators.email.valid = validators.email.rules[0].test.test(e.target.value);
+            if(validators.email.valid) {
+                setIsValid(true);
+                setEmail(e.target.value)
+            } else {
+                setIsValid(false);
+            }
+        }
+    }
+
+    const isAuthenticated = async (remember) => {
         let current = null;
          await Auth.onAuthStateChanged(user => {
             if(user) {
                 current = user;
-                props.update({currUser:true, uid: current.uid})
+                if(remember) {
+                    console.log('inside set expiration')
+                    document.cookie = `userID=${current.uid}; expires=Thu, 31 Dec 2099 23:59:59 GM`
+                    document.cookie = `authed=1; expires=Thu, 31 Dec 2099 23:59:59 GM`
+                } else {
+                    console.log('inside session expiration')
+                    document.cookie = `userID=${current.uid}`
+                    document.cookie = `authed=1`
+                }
             } else {
-                current = false;
-                props.update({currUser: false, uid: null})
+                document.cookie = `userID=null`
+                document.cookie = `authed=0`
             }
         })
-        console.log('props', props.currUser);
-        return current;
     }
-
-
-    // TODO: add validators    
+  
     
     const doLogin = (event) => {
         const email1 = email;
         const password1 = password;
-        if(rememeberMe) {
-            Auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-            .then(() => {
-                return Auth.signInWithEmailAndPassword(email1, password1)
-                .then(() => {
-                    setEmail(email1);
-                    setPassword(password1);
-                    isAuthenticated();
-                    history.push('/')
-                })
-                .catch((error) => {
-                    console.log('email', email1)
-                    console.log('err', error);
-                    alert("Invalid login id or password.");
-                });
-            }) 
-        } else {
-            Auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
-            .then(() => {
-                return Auth.signInWithEmailAndPassword(email1, password1)
-                .then(() => {
-                    setEmail(email1);
-                    setPassword(password1);
-                    isAuthenticated();
-                    history.push('/')
-                })
-                .catch((error) => {
-                    console.log('email', email1)
-                    console.log('err', error);
-                    alert("Invalid login id or password.");
-                });
-            })
-        }
-
         event.preventDefault();
+        Auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
+        .then(() => {
+            return Auth.signInWithEmailAndPassword(email1, password1)
+            .then(() => {
+                setEmail(email1);
+                setPassword(password1);
+                isAuthenticated(rememeberMe);
+                history.push('/')
+            })
+            .catch((error) => {
+                console.log('email', email1)
+                console.log('err', error);
+                alert("Invalid login id or password.");
+            });
+        }) 
     };
 
 
@@ -102,13 +96,14 @@ function Login (props) {
                         name='email' 
                         type='email'
                        placeholder='Email'
-                       onChange={(e) => setEmail(e.target.value)}></input> {' '}
+                       onBlur={onFill}></input> {' '}
+                       {isValid ? null : <p>Please enter a valid email</p>}
                     <label className='label'>Password:</label>
                     <input className='text' 
                         name='password' 
                         type='password'
                         placeholder='Password'
-                        onChange={(e)=> setPassword(e.target.value)}></input>
+                        onBlur={(e) => setPassword(e.target.value)}></input>
                     <span>
                     <input onClick={setRemember} type='checkbox' id='remember'></input>
                     <label>Remember Me?</label>
@@ -122,4 +117,4 @@ function Login (props) {
     
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;

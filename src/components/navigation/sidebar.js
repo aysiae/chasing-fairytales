@@ -20,7 +20,8 @@ function Sidebar(props) {
 
     const handleSignOut = async () => {
         Auth.signOut();
-        props.update()
+        document.cookie = 'authed=0'
+        document.cookie = 'userID=null'
         history.push('/welcome');
     }
 
