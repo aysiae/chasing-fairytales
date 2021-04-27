@@ -24,6 +24,7 @@ function CharacterForm(props) {
     
     // state 
     const [inRelationship, setInRelationship] = useState(false)
+    const [img, setImg] = useState('');
     const [viewSections, setViewSections] = useState({
         basics: false,
         physical: false,
@@ -36,11 +37,12 @@ function CharacterForm(props) {
         notes: false,
 
     })
-
+    const [uploadImg, setUploadImg] = useState(false);
     
 
     // body
     const charSheet = {};
+    const placeholderImg = 'https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2027&q=80';
 
     const handleInRelationship = (value) => {
         if(value !== 'Single') {
@@ -50,6 +52,7 @@ function CharacterForm(props) {
         }
     }
 
+    // handle toggle visibility of form sections 
     const handleIsVisible = (e) => {
         if(viewSections[e.target.name]) {
             setViewSections({...viewSections, [e.target.name]: false})
@@ -59,27 +62,44 @@ function CharacterForm(props) {
         console.log(viewSections[e.target.name])
     }
 
-
+    // adds data to the character sheet form 'body' object 
     const handleBody = (e) => {
         charSheet[e.target.name] = e.target.value; 
     }
 
-
-    // handleSubmit
+    // adds information to the database upon completion 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        charSheet['uuid'] = uuid();
+        charSheet['uuid'] = uuid(); // every character is given their own unique ID 
         addCharacter(charSheet);
-        history.push('/chars')
+        history.push('/chars') // after submission redirected to characters page 
     }
 
+    const handleImgUpload = (e) => {
+        if(uploadImg) {
+            setUploadImg(false)
+            handleSaveImg();
+        } else {
+            setUploadImg(true)
+        }
+    }
 
+    const handleSaveImg = (e) => {
+        setImg(charSheet.img);
+    }
 
     return(
         <>
         <Header />
         <div id='form'>
-            <form>
+            <div>
+                <img src={img ? img : placeholderImg}></img>  
+                <button onClick={handleImgUpload}>{uploadImg ? 'Save' : 'Add Image URL'}</button>
+                {uploadImg ? 
+                <input onChange={handleBody} type='text' name='img' placeholder={img ? img : 'Copy & Paste Image URL'}/>    
+            : null}
+            </div>
+            <form>  
             <h3>Character Sheet:</h3>
 
 
