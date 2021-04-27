@@ -21,12 +21,6 @@ import {
 } from "react-router-dom";
 
 
-// redux 
-import {connect} from 'react-redux';
-const mapStateToProps = state => ({
-  currUser: state.currUser
-})
-
 
 
 function App(props) {
@@ -40,33 +34,18 @@ function App(props) {
           <Sidebar/>
           <AddCharacter/>
       </Route>
-      <Route exact path='/worlds'>
-          <Worlds/>
-      </Route>
-      <Route exact path='/universes'>
-          <Universes/>
-      </Route>
-      <Route exact path='/notes'>
-          <Notes/>
-      </Route>
-      <Route exact path='/scenes'>
-          <Scenes/>
-      </Route>
-      {/* <PrivateRoutes exact path='/' auth={props.currUser.currUser} component={Home}/> */}
-      <Route exact path='/'>
-        <Home/>
-        </Route>
+      <PrivateRoutes exact path='/worlds' component={Worlds}/>
+      <PrivateRoutes exact path='/scenes' component={Scenes}/>
+      <PrivateRoutes exact path='/universes' component={Universes}/>
+      <PrivateRoutes exact path='/' component={Home}/>
+      <PrivateRoutes exact path='/notes' component={Notes}/>
+      <PrivateRoutes exact path='/chars' component={Characters}/>
+      <PrivateRoutes exact path='/chars/add' component={CharacterForm}/>
       <Route exact path='/login'>
         <Login />
       </Route>
       <Route exact path='/welcome'>
         <Splash/>
-      </Route>
-      <Route exact path ='/chars/add'>
-          <CharacterForm/>
-      </Route>
-      <Route exact path='/chars'>
-        <Characters />
       </Route>
       </Switch>
     </Router>
@@ -74,4 +53,4 @@ function App(props) {
   );
 }
 
-export default connect(mapStateToProps)(App);
+export default App;
