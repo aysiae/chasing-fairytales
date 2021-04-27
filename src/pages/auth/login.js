@@ -1,24 +1,18 @@
 import {useState} from 'react';
 import {firebase, Auth} from '../../firebase/firebase';
 import {useHistory} from 'react-router-dom';
-import {connect} from 'react-redux';
 
 // imports from other files
 import './login.scss';
-import {update} from '../../redux/reducers/authenticated';
 import validators from './validators';
 
-const mapDispatchToProps = {update};
-
-const mapStateToProps = state => ({
-    currUser: state.currUser
-})
 
 
 function Login (props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rememeberMe, setRememberMe] = useState(false);
+    const [isValid, setIsValid] = useState(true);
 
     const history = useHistory();
 
@@ -37,9 +31,11 @@ function Login (props) {
         if(e.target.name == 'email') {
             validators.email.valid = validators.email.rules[0].test.test(e.target.value);
             if(validators.email.valid) {
+                setIsValid(true);
                 setEmail(e.target.value)
             } else {
-                alert(validators.email.rules[0].message);
+                setIsValid(false);
+                // alert(validators.email.rules[0].message);
             }
         }
     }
@@ -49,14 +45,13 @@ function Login (props) {
          await Auth.onAuthStateChanged(user => {
             if(user) {
                 current = user;
-                props.update({currUser:true, uid: current.uid})
+                document.cookie = `userID=${current.uid}; expires=Thu, 31 Dec 2099 23:59:59 GM`
+                document.cookie = `authed=true; expires=Thu, 31 Dec 2099 23:59:59 GM`
             } else {
-                current = false;
-                props.update({currUser: false, uid: null})
+                document.cookie = `userID=null`
+                document.cookie = `authed=false`
             }
         })
-        console.log('props', props.currUser);
-        return current;
     }
 
 
@@ -116,12 +111,13 @@ function Login (props) {
                         type='email'
                        placeholder='Email'
                        onBlur={onFill}></input> {' '}
+                       {isValid ? null : <p>Please enter a valid email</p>}
                     <label className='label'>Password:</label>
                     <input className='text' 
                         name='password' 
                         type='password'
                         placeholder='Password'
-                        onBlur={onFill}></input>
+                        onBlur={(e) => setPassword(e.target.value)}></input>
                     <span>
                     <input onClick={setRemember} type='checkbox' id='remember'></input>
                     <label>Remember Me?</label>
@@ -135,4 +131,4 @@ function Login (props) {
     
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;
