@@ -7,10 +7,10 @@ import thunk from 'redux-thunk';
 // reducers
 import oneliners from './reducers/oneliners';
 import currUser from './reducers/authenticated';
-import categories from './reducers/characters';
+import characters from './reducers/characters';
 
 // combine reducers
-let reducers = combineReducers({oneliners, currUser, categories})
+let reducers = combineReducers({oneliners, currUser, characters})
 
 const store = () => {
     return createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))

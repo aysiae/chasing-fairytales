@@ -31,7 +31,7 @@ function Home (props) {
             <main className='home-dash'>
                 <OnelinerPrompts/>
                 <div id='home-chars'>
-
+                    
                 </div>
                 <div id='home-universe'>
 
