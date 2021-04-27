@@ -11,16 +11,28 @@ body {
 
     form {
         width: 45%;
-        padding-left: 10%;
+        padding-left: 5%;
 
     }
 
-    img {
-        object-fit: cover;
-        width: 400px;
-        height: 400px;
-        margin-top: 8%;
+    div:first-child {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        margin-top: 4%;
+
+        img {
+            object-fit: cover;
+            width: 400px;
+            height: 400px;
+            margin-top: 8.5%;
+        }
+
+        button {
+            width: 200px;
+        }
     }
+
 }
 
 .textArea {

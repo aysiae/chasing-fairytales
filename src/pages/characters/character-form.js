@@ -37,7 +37,7 @@ function CharacterForm(props) {
         notes: false,
 
     })
-
+    const [uploadImg, setUploadImg] = useState(false);
     
 
     // body
@@ -52,6 +52,7 @@ function CharacterForm(props) {
         }
     }
 
+    // handle toggle visibility of form sections 
     const handleIsVisible = (e) => {
         if(viewSections[e.target.name]) {
             setViewSections({...viewSections, [e.target.name]: false})
@@ -61,24 +62,31 @@ function CharacterForm(props) {
         console.log(viewSections[e.target.name])
     }
 
-
+    // adds data to the character sheet form 'body' object 
     const handleBody = (e) => {
         charSheet[e.target.name] = e.target.value; 
-        if(e.target.name == 'img') {
-            setImg(e.target.value);
+    }
+
+    // adds information to the database upon completion 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        charSheet['uuid'] = uuid(); // every character is given their own unique ID 
+        addCharacter(charSheet);
+        history.push('/chars') // after submission redirected to characters page 
+    }
+
+    const handleImgUpload = (e) => {
+        if(uploadImg) {
+            setUploadImg(false)
+            handleSaveImg();
+        } else {
+            setUploadImg(true)
         }
     }
 
-
-    // handleSubmit
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        charSheet['uuid'] = uuid();
-        addCharacter(charSheet);
-        history.push('/chars')
+    const handleSaveImg = (e) => {
+        setImg(charSheet.img);
     }
-
-
 
     return(
         <>
@@ -86,10 +94,13 @@ function CharacterForm(props) {
         <div id='form'>
             <div>
                 <img src={img ? img : placeholderImg}></img>  
-                <button>Add Image URL</button>
+                <button onClick={handleImgUpload}>{uploadImg ? 'Save' : 'Add Image URL'}</button>
+                {uploadImg ? 
+                <input onChange={handleBody} type='text' name='img' placeholder={img ? img : 'Copy & Paste Image URL'}/>    
+            : null}
             </div>
             <form>  
-                <h3>Character Sheet:</h3>
+            <h3>Character Sheet:</h3>
 
 
 
