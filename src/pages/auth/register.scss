@@ -1,0 +1,21 @@
+#page {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+
+    h2 {
+        margin-bottom: -67px;
+        width: 100%;
+        text-align: center;
+        width: 90%;
+    }
+    
+    div {
+        margin-left: 22.5%;
+        padding: 2.5%;
+        background-color: white;
+        width: 50%;
+        color: black;
+    }
+}

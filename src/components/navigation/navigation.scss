@@ -34,7 +34,7 @@ nav {
   nav ul li {
     display: inline-block;
   }
-  nav ul li a {
+  nav ul li p {
     display: block;
     padding: 15px;
     text-decoration: none;
@@ -44,12 +44,12 @@ nav {
     margin: 0 10px;
     font-family: $font-newsreader;
   }
-  nav ul li a,
-  nav ul li a:after,
-  nav ul li a:before {
+  nav ul li p,
+  nav ul li p:after,
+  nav ul li p:before {
     transition: all .5s;
   }
-  nav ul li a:hover {
+  nav ul li p:hover {
     color: rgb(145, 4, 163);
   }
   
@@ -57,12 +57,12 @@ nav {
   
   
   /* stroke */
-  nav.stroke ul li a,
-  nav.fill ul li a {
+  nav.stroke ul li p,
+  nav.fill ul li p {
     position: relative;
   }
-  nav.stroke ul li a:after,
-  nav.fill ul li a:after {
+  nav.stroke ul li p:after,
+  nav.fill ul li p:after {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -74,10 +74,10 @@ nav {
     background: rgb(145, 4, 163);
     height: 1px;
   }
-  nav.stroke ul li a:hover:after {
+  nav.stroke ul li p:hover:after {
     width: 100%;
   }
   
-  nav.fill ul li a {
+  nav.fill ul li p {
     transition: all 2s;
   }

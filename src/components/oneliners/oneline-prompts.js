@@ -36,8 +36,9 @@ function OnelinerPrompts (props) {
     return (
         <div id='oneline-prompts'>
             <h3>Quick Prompts:</h3>
+            <p>{`"${newPrompt}"`}</p>
             <button onClick={getRandomPrompt}>New Prompt</button>
-            <textarea placeholder={`"${newPrompt}"`} rows='20' cols='30'/>
+            <textarea rows='20' cols='30'/>
             
         </div>
     )

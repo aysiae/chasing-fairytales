@@ -40,7 +40,7 @@ function Sidebar(props) {
             </div>
                 <div>
                     <p>PROFILE</p>
-                    <p>MESSAGES</p>
+                    {/* <p>MESSAGES</p> */}
                     <p>ADD NEW CHARACTER</p>
                     <p>ADD NEW WORLD</p>
                     <p>ADD NEW UNIVERSE</p>

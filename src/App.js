@@ -1,6 +1,5 @@
 // pages 
 import Home from './pages/home/home';
-import Sidebar from './components/navigation/sidebar';
 import Splash from './pages/splash/splash.js';
 import Login from './pages/auth/login';
 import CharacterForm from './pages/characters/character-form';
@@ -9,7 +8,10 @@ import Worlds from './pages/worlds/worlds';
 import Universes from './pages/universes/universes';
 import Scenes from './pages/scenes/scenes';
 import Notes from './pages/notes/notes';
-import AddCharacter from './pages/characters/addChar';
+import SingleChar from './pages/characters/single-char';
+import Register from './pages/auth/register';
+
+// routes
 import PrivateRoutes from './routes/private';
 
 // dependencies
@@ -31,8 +33,6 @@ function App(props) {
     <Router>
       <Switch>
       <Route exact path='/test'>
-          <Sidebar/>
-          <AddCharacter/>
       </Route>
       <PrivateRoutes exact path='/worlds' component={Worlds}/>
       <PrivateRoutes exact path='/scenes' component={Scenes}/>
@@ -41,6 +41,10 @@ function App(props) {
       <PrivateRoutes exact path='/notes' component={Notes}/>
       <PrivateRoutes exact path='/chars' component={Characters}/>
       <PrivateRoutes exact path='/chars/add' component={CharacterForm}/>
+      <PrivateRoutes exact path='/chars/:uuid' component={SingleChar}/>
+      <Route exact path='/register'>
+          <Register/>
+      </Route>
       <Route exact path='/login'>
         <Login />
       </Route>

@@ -15,7 +15,9 @@ function Splash () {
                         <button>Login</button> 
                     </Link>
                     {/* add link to Register once page is made */}
+                    <Link to='/register'>
                     <button>Register</button>
+                    </Link>
                     </span>
                 </div>
             </div>

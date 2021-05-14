@@ -65,7 +65,17 @@ function Home (props) {
                     </div>
                 </div>
                 <div id='home-universe'>
-
+                    <h3>Quick Notes:</h3>
+                    <div>
+                        <span>
+                            <h4>Title</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris enim tellus, aliquam quis pharetra placerat, laoreet ut eros. Quisque eget velit quis neque cursus faucibus dignissim vitae sapien. Aenean mi augue, posuere ut venenatis at, fermentum vitae turpis. Mauris tempor enim orci, ac cursus libero commodo in. Nullam vehicula risus.</p>
+                        </span>
+                        <span>
+                            <h4>Title</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris enim tellus, aliquam quis pharetra placerat, laoreet ut eros. Quisque eget velit quis neque cursus faucibus dignissim vitae sapien. Aenean mi augue, posuere ut venenatis at, fermentum vitae turpis. Mauris tempor enim orci, ac cursus libero commodo in. Nullam vehicula risus.</p>
+                        </span>
+                    </div>
                     
                 </div>
             </main>
