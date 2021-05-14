@@ -1,7 +1,23 @@
+import { useState } from 'react';
 import './register.scss';
 
 
 function Register() {
+    const [passwords, setPasswords] = useState({init: '', retype: '', match: true})
+
+
+    const setPassword = (e) => {
+        setPasswords({...passwords, [e.target.name]: e.target.value});
+    }
+
+    const checkPasswords = (e) => {
+        if(passwords.init != passwords.retype) {
+            setPasswords({...passwords, match: false})
+        } else {
+            setPasswords({...passwords, match: true})
+        }
+    }
+
 
     return (
         <>
@@ -12,9 +28,10 @@ function Register() {
                     <label>Email</label>
                     <input type='email'/>
                     <label>Password</label>
-                    <input type='password'/>
+                    <input onChange={setPassword} name='init' type='password'/>
                     <label>Retype Password</label>
-                    <input type='password'/>
+                    <input onBlur={checkPasswords} onChange={setPassword} name='retype' type='password'/>
+                    {passwords.match ? null : <p style={{color:'red'}}>Passwords do not match!</p>}
                     <label> Username: </label>
                     <input type='text'/>
                     <label>Birthday</label>
@@ -33,6 +50,8 @@ function Register() {
                     <input type='text'/>
                     <button>Start Writing</button>
                 </form>
+
+                <p>Development Note: this is  static page at the moment</p>
             </div>
         </div>
         </>
