@@ -1,12 +1,19 @@
 import './single-char.scss';
 import Header from '../../components/header/header';
 import {useLocation} from 'react-router-dom';
+import { useState } from 'react';
 
 function SingleChar(props) {
+    const [edit, setEdit] = useState(false);
 
-    const handleClick = () => {
-        console.log(props.location.state)
+    const handleEdit = () => {
+        if(edit) {
+            setEdit(false);
+        } else {
+            setEdit(true);
+        }
     }
+
     return (
         <>
         <Header/>
@@ -17,8 +24,11 @@ function SingleChar(props) {
             </div>
             
             <div id='info'>
-
+                {edit ? 
+                <p>hello</p>
+            : <p>goodbye</p>}
             </div>
+
         </div>
         
         
