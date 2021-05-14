@@ -9,7 +9,7 @@ import Worlds from './pages/worlds/worlds';
 import Universes from './pages/universes/universes';
 import Scenes from './pages/scenes/scenes';
 import Notes from './pages/notes/notes';
-import AddCharacter from './pages/characters/addChar';
+import SingleChar from './pages/characters/single-char';
 
 // routes
 import PrivateRoutes from './routes/private';
@@ -33,8 +33,6 @@ function App(props) {
     <Router>
       <Switch>
       <Route exact path='/test'>
-          <Sidebar/>
-          <AddCharacter/>
       </Route>
       <PrivateRoutes exact path='/worlds' component={Worlds}/>
       <PrivateRoutes exact path='/scenes' component={Scenes}/>
@@ -43,7 +41,7 @@ function App(props) {
       <PrivateRoutes exact path='/notes' component={Notes}/>
       <PrivateRoutes exact path='/chars' component={Characters}/>
       <PrivateRoutes exact path='/chars/add' component={CharacterForm}/>
-      <PrivateRoutes exact path='/chars/:uuid' component={CharacterForm}/>
+      <PrivateRoutes exact path='/chars/:uuid' component={SingleChar}/>
       <Route exact path='/login'>
         <Login />
       </Route>

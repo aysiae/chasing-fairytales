@@ -37,11 +37,6 @@ function Characters (props) {
         history.push('/chars/add')
 
     }
-
-    const loadCharacterSheet = (char) => {
-        console.log(char.firstName)
-    }
-
     
     useEffect(loadCharacters,[]);
 
@@ -57,8 +52,9 @@ function Characters (props) {
                 return (
                 <Link to={{
                     pathname:`/chars/${char.charSheet.uuid}`,
-                    state: {chars: char.charSheet}
-                }}>
+                    state: {char: char.charSheet}
+                }}
+                    style={{textDecoration:'none'}}>
                     <div className='card'>
 
                     {/* conditionally render plain text vs input for edits using char.edit*/}
