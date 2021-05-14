@@ -10,6 +10,8 @@ import Universes from './pages/universes/universes';
 import Scenes from './pages/scenes/scenes';
 import Notes from './pages/notes/notes';
 import AddCharacter from './pages/characters/addChar';
+
+// routes
 import PrivateRoutes from './routes/private';
 
 // dependencies
@@ -41,6 +43,7 @@ function App(props) {
       <PrivateRoutes exact path='/notes' component={Notes}/>
       <PrivateRoutes exact path='/chars' component={Characters}/>
       <PrivateRoutes exact path='/chars/add' component={CharacterForm}/>
+      <PrivateRoutes exact path='/chars/:uuid' component={CharacterForm}/>
       <Route exact path='/login'>
         <Login />
       </Route>

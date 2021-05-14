@@ -1,7 +1,7 @@
 // import {connect} from 'react-redux';
 import {getAll} from '../../firebase/database/chars'
 import {useState, useEffect} from 'react'
-import {useHistory} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 
 // components 
 import Header from '../../components/header/header';
@@ -55,14 +55,19 @@ function Characters (props) {
                 
                 char.edit = false;
                 return (
-                <div onClick={() => loadCharacterSheet(char.charSheet)} className='card'>
+                <Link to={{
+                    pathname:`/chars/${char.charSheet.uuid}`,
+                    state: {chars: char.charSheet}
+                }}>
+                    <div className='card'>
 
-                {/* conditionally render plain text vs input for edits using char.edit*/}
-                {char.charSheet.img ?
-                <img src={char.charSheet.img} style={{width:'100%',}} />
-                : <img src={placeholderImg} style={{width:'100%',}}/>}
-                <h3>{char.charSheet.firstName} {char.charSheet.lastName}</h3>
-                </div>
+                    {/* conditionally render plain text vs input for edits using char.edit*/}
+                    {char.charSheet.img ?
+                    <img src={char.charSheet.img} style={{width:'100%',}} />
+                    : <img src={placeholderImg} style={{width:'100%',}}/>}
+                    <h3>{char.charSheet.firstName} {char.charSheet.lastName}</h3>
+                    </div>
+                </Link>
 
             )})}
             </div>
