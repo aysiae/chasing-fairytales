@@ -3,7 +3,10 @@ import './register.scss';
 
 
 function Register() {
+    // mutable state data 
     const [passwords, setPasswords] = useState({init: '', retype: '', match: true});
+    
+    // immutable data 
     const questions1 = [
         'What was the breed of your first dog?',
         'What is the title of your favorite movie?',
@@ -58,7 +61,7 @@ function Register() {
                         ))}
                         
                     </select>
-                    <label>Answer (not case sensitive)</label>
+                    <label>Answer (is not case sensitive)</label>
                     <input type='text'/>
                     <label>Pick a Security Question (2)</label>
                     <select>
@@ -66,7 +69,7 @@ function Register() {
                             <option>{q}</option>
                         ))}
                     </select>
-                    <label>Answer (not case sensitive)</label>
+                    <label>Answer (is not case sensitive)</label>
                     <input type='text'/>
                     <button>Start Writing</button>
                 </form>
